@@ -3,8 +3,7 @@
 <configuration debug="false" scan="true">
 
 	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
-			by default -->
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
 		<encoder>
 			<pattern>%-27(%d [%thread] %-5level) - %logger{36} - %msg%n%ex{short}</pattern>
 		</encoder>

@@ -6,8 +6,21 @@
 	<packaging>pom</packaging>
 
 	<name>Jar to POM</name>
-
 	<description>Convert jar to POM</description>
+
+	<inceptionYear>2014</inceptionYear>
+	<url>https://github.com/ldez/jar2pom</url>
+
+	<scm>
+		<url>https://github.com/ldez/jar2pom.git</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>ldez</id>
+			<url>https://github.com/ldez</url>
+		</developer>
+	</developers>
 
 	<modules>
 		<module>jar2pom</module>

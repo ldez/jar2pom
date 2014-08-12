@@ -1,7 +1,5 @@
 package com.ludo.jar2pom.core.file;
 
-import static java.nio.file.FileVisitResult.CONTINUE;
-
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
@@ -41,12 +39,11 @@ public class FileJarVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-        super.visitFile(file, attrs);
 
         if (JAR_MATCHER.matches(file)) {
             this.process(file);
         }
-        return CONTINUE;
+        return super.visitFile(file, attrs);
     }
 
     protected final void process(final Path file) throws IOException {

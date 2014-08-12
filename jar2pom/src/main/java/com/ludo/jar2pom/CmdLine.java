@@ -102,12 +102,11 @@ public class CmdLine {
             // parse the arguments.
             parser.parseArgument(args);
 
-            Files.exists(this.output, LinkOption.NOFOLLOW_LINKS);
-            Files.isDirectory(this.output, LinkOption.NOFOLLOW_LINKS);
-
             if (this.help) {
                 this.printHelp(parser, System.out);
             } else {
+                LOG.debug("Input: {}", this.input);
+
                 // check output Directory, create if not exists
                 this.createDirectory(parser, this.output);
 
