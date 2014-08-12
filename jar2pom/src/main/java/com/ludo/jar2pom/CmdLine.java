@@ -61,7 +61,7 @@ public class CmdLine {
     @Option(name = "-o", usage = "directory output path.\n(default output is console)", metaVar = "OUTPUT", required = false, handler = PathOptionHandler.class)
     private final Path output = Paths.get(".");
 
-    @Option(name = "-host", usage = "defined custom Nexus host.\n(ex: oss.sonatype.org)", required = false)
+    @Option(name = "-host", usage = "defined custom Nexus host.\n(ex: oss.sonatype.org)", metaVar = "HOST", required = false)
     private final String customHost = null;
 
     @Option(name = "-p", aliases = { "--proxy" }, usage = "Use system proxies.", required = false)
@@ -146,7 +146,7 @@ public class CmdLine {
         // print the list of available options
         parser.printUsage(printStream);
         // print options sample
-        printStream.printf("%n Example: java -jar jar2pom.jar%2$s", parser.printExample(OptionHandlerFilter.ALL));
+        printStream.printf("%n Example: java -jar jar2pom.jar%1$s", parser.printExample(OptionHandlerFilter.ALL));
     }
 
     protected final void createDirectory(final CmdLineParser parser, final Path file) throws CmdLineException {

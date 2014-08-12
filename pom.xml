@@ -74,6 +74,7 @@
 		<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
 		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
 		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+		<maven-shade-plugin.version>2.3</maven-shade-plugin.version>
 
 		<maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
@@ -84,7 +85,6 @@
 
 		<apt-maven-plugin.version>1.1.1</apt-maven-plugin.version>
 		<jaxb2-maven-plugin.version>1.5</jaxb2-maven-plugin.version>
-
 
 		<!-- ==== Report plugin's versions ==== -->
 		<maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
@@ -382,7 +382,6 @@
 						<encoding>${javac.encoding}</encoding>
 						<source>${javac.source.version}</source>
 						<target>${javac.target.version}</target>
-						<!-- <compilerArgument>-Xlint:all</compilerArgument> -->
 						<showWarnings>true</showWarnings>
 						<showDeprecation>true</showDeprecation>
 						<optimize>true</optimize>
@@ -512,7 +511,6 @@
 						<!-- <npa>true</npa> -->
 						<extension>true</extension>
 						<arguments>-Xcommons-lang -Xfluent-api -Xvalue-constructor -Xsetters -Xsetters-mode=direct -Xinheritance</arguments>
-						<!-- -XtoString -Xequals -XhashCode -Xsetters -Xsetters-mode=direct -Xinheritance -mark-generated -Xannotate -Xmergeable -->
 					</configuration>
 					<dependencies>
 						<!-- comment because bug ! security read failed -->
@@ -615,6 +613,13 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>${maven-assembly-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== Shade ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${maven-shade-plugin.version}</version>
 				</plugin>
 
 			</plugins>
