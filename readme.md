@@ -19,8 +19,8 @@ Détail:
 - Pour chaque fichier JAR, calcule du SHA1.
 - Interogation de services REST des dépôts Maven.
 - Création d'un POM (sortie console ou fichier)
+- gestion de proxy (uniquement system pour l'instant)
 - ? : recherche avec utilisation du nom du jar pour artifact Id
-- ? : gestion de proxy
 
 ### Jar Analysis ###
 
