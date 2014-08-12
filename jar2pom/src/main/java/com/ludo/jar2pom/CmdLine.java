@@ -78,7 +78,7 @@ public class CmdLine {
     }
 
     public static void main(final String[] args) throws IOException {
-        // TODO : Sauron - 12 août 2014 : add multiple strategy
+        // TODO : ldez - 12 août 2014 : add multiple strategy
         // create remote search strategy
         final DescriptorStrategy nexusIdentifyDescriptorStrategy = new NexusIdentifyDescriptorStrategy();
         final DescriptorStrategy descriptorStrategy = new CompositeDescriptorStrategy(nexusIdentifyDescriptorStrategy);
@@ -142,17 +142,17 @@ public class CmdLine {
     }
 
     private void printHelp(final CmdLineParser parser, final PrintStream printStream) {
-        printStream.printf("java %s [options...]%n", CmdLine.class.getSimpleName());
+        printStream.println("java -jar jar2pom.jar [options...]%n");
         // print the list of available options
         parser.printUsage(printStream);
         // print options sample
-        printStream.printf("%n Example: java %1$s%2$s", CmdLine.class.getSimpleName(), parser.printExample(OptionHandlerFilter.ALL));
+        printStream.printf("%n Example: java -jar jar2pom.jar%2$s", parser.printExample(OptionHandlerFilter.ALL));
     }
 
     protected final void createDirectory(final CmdLineParser parser, final Path file) throws CmdLineException {
         LOG.debug("Output directory : {}", file.toAbsolutePath());
         if (Files.isDirectory(file, LinkOption.NOFOLLOW_LINKS)) {
-            // FIXME : Sauron - 12 août 2014 : no action
+            // FIXME : ldez - 12 août 2014 : no action
         } else if (Files.exists(file, LinkOption.NOFOLLOW_LINKS)) {
             // is not directory : FAIL
             throw new CmdLineException(parser, Messages.ILLEGAL_PATH, this.output.toString());

@@ -10,7 +10,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.ludo.jar2pom" level="DEBUG" />
+	<logger name="com.ludo.jar2pom" level="ERROR" />
 
 	<root level="WARN">
 		<appender-ref ref="consoleAppender" />

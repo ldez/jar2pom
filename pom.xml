@@ -556,39 +556,6 @@
 					</dependencies>
 				</plugin>
 
-				<!-- ==== Wro4j ==== -->
-				<plugin>
-					<groupId>ro.isdc.wro4j</groupId>
-					<artifactId>wro4j-maven-plugin</artifactId>
-					<version>${wro4j-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>manage-assets</id>
-							<phase>generate-resources</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-							<configuration>
-								<!-- <targetGroups>myapp${minifier.suffix},myapp.head${minifier.suffix},myapp.tail${minifier.suffix},myapp.compfurniture.head${minifier.suffix},myapp.compfurniture.tail${minifier.suffix},myapp.compfurniture${minifier.suffix},myapp.compfurniture.oldie${minifier.suffix},myapp.oldie${minifier.suffix},myapp.public${minifier.suffix}</targetGroups> -->
-								<!-- <minimize>true</minimize> -->
-								<!-- <ignoreMissingResources>false</ignoreMissingResources> -->
-								<!-- By default : <contextFolder>${basedir}/src/main/webapp/</contextFolder> -->
-								<destinationFolder>${project.build.directory}/${project.build.finalName}/resources/</destinationFolder>
-								<!-- <cssDestinationFolder>${assets.folder.aggregate}/css</cssDestinationFolder> -->
-								<!-- <jsDestinationFolder>${assets.folder.aggregate}/js</jsDestinationFolder> -->
-								<!-- By default : <extraConfigFile>/WEB-INF/wro.properties</extraConfigFile> -->
-							</configuration>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>ro.isdc.wro4j</groupId>
-							<artifactId>wro4j-extensions</artifactId>
-							<version>${vro4j.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-
 				<!-- ==== Source ==== -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
