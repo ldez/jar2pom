@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchNGResponse>
+    <totalCount>0</totalCount>
+    <from>0</from>
+    <data>
+        <nexusNGArtifact>
+            <artifactId>jetty-webapp</artifactId>
+            <version>7.3.0.v20110203</version>
+            <groupId>org.eclipse.jetty</groupId>
+        </nexusNGArtifact>
+    </data>
+    <count>0</count>
+    <collapsed>false</collapsed>
+    <tooManyResults>false</tooManyResults>
+</searchNGResponse>

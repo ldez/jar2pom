@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchNGResponse>
+	<totalCount>1</totalCount>
+	<from>-1</from>
+	<count>-1</count>
+	<tooManyResults>false</tooManyResults>
+	<collapsed>false</collapsed>
+	<repoDetails>
+		<org.sonatype.nexus.rest.model.NexusNGRepositoryDetail>
+			<repositoryId>jetty-releases</repositoryId>
+			<repositoryName>Jetty Releases</repositoryName>
+			<repositoryContentClass>maven2</repositoryContentClass>
+			<repositoryKind>hosted</repositoryKind>
+			<repositoryPolicy>RELEASE</repositoryPolicy>
+			<repositoryURL>https://oss.sonatype.org/service/local/repositories/jetty-releases</repositoryURL>
+		</org.sonatype.nexus.rest.model.NexusNGRepositoryDetail>
+	</repoDetails>
+	<data>
+		<artifact>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>7.3.0.v20110203</version>
+			<latestRelease>7.3.0.v20110203</latestRelease>
+			<latestReleaseRepositoryId>jetty-releases</latestReleaseRepositoryId>
+			<artifactHits>
+				<artifactHit>
+					<repositoryId>jetty-releases</repositoryId>
+					<artifactLinks>
+						<artifactLink>
+							<extension>pom</extension>
+						</artifactLink>
+						<artifactLink>
+							<extension>jar</extension>
+						</artifactLink>
+					</artifactLinks>
+				</artifactHit>
+			</artifactHits>
+		</artifact>
+	</data>
+</searchNGResponse>

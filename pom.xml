@@ -1,0 +1,820 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ludo</groupId>
+	<artifactId>jar2pom-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Jar to POM</name>
+
+	<description>Convert jar to POM</description>
+
+	<modules>
+		<module>jar2pom</module>
+		<module>jar2pom-core</module>
+		<module>maven-central-plugin</module>
+		<module>nexus-plugin</module>
+	</modules>
+
+	<properties>
+
+		<!-- ==== Build Properties ==== -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javac.encoding>UTF-8</javac.encoding>
+		<javac.source.version>1.7</javac.source.version>
+		<javac.target.version>1.7</javac.target.version>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+		<prerequisites.maven.version>3.0.1</prerequisites.maven.version>
+
+		<!-- ========= Dependencies version ========= -->
+
+		<jersey2.version>2.11</jersey2.version>
+
+		<jackson.version>2.4.1</jackson.version>
+
+		<mustache.version>0.8.16</mustache.version>
+
+		<args4j.version>2.0.29</args4j.version>
+
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-collections4.version>4.0</commons-collections4.version>
+
+		<guava.version>17.0</guava.version>
+
+		<zt-zip.version>1.8</zt-zip.version>
+
+		<jaxb2-basics.version>0.6.5</jaxb2-basics.version>
+		<jaxb2-basics-runtime.version>0.6.5.1</jaxb2-basics-runtime.version>
+		<jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
+		<jaxb2-commons-lang.version>2.4</jaxb2-commons-lang.version>
+		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
+		<jaxb2-basics-annotate.version>0.6.5</jaxb2-basics-annotate.version>
+
+		<slf4j.version>1.7.7</slf4j.version>
+		<logback.version>1.1.2</logback.version>
+		<janino.version>2.7.5</janino.version>
+
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<objenesis.version>2.1</objenesis.version>
+		<surefire.version>2.14</surefire.version>
+		<hamcrest.version>1.3</hamcrest.version>
+		<JUnitParams.version>1.0.3</JUnitParams.version>
+		<xmlunit.version>1.5</xmlunit.version>
+		<openpojo.version>0.5.1</openpojo.version>
+
+		<!-- ==== Plugin's versions ==== -->
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+
+		<maven-failsafe-plugin.version>2.16</maven-failsafe-plugin.version>
+		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
+
+		<versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+		<maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+
+		<apt-maven-plugin.version>1.1.1</apt-maven-plugin.version>
+		<jaxb2-maven-plugin.version>1.5</jaxb2-maven-plugin.version>
+
+
+		<!-- ==== Report plugin's versions ==== -->
+		<maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
+		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+		<maven-jxr-plugin.version>2.4</maven-jxr-plugin.version>
+		<cobertura-maven-plugin.version> 2.6</cobertura-maven-plugin.version>
+		<taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
+		<findbugs-maven-plugin.version>2.5.3</findbugs-maven-plugin.version>
+		<maven-checkstyle-plugin.version>2.10</maven-checkstyle-plugin.version>
+		<maven-pmd-plugin.version>3.0.1</maven-pmd-plugin.version>
+	</properties>
+
+	<prerequisites>
+		<maven>${prerequisites.maven.version}</maven>
+	</prerequisites>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- ==== Modules ==== -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>jar2pom-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>nexus-plugin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>maven-central-plugin</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- == Jersey 2 == -->
+			<dependency>
+				<groupId>org.glassfish.jersey.core</groupId>
+				<artifactId>jersey-client</artifactId>
+				<version>${jersey2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-json-jackson</artifactId>
+				<version>${jersey2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.connectors</groupId>
+				<artifactId>jersey-apache-connector</artifactId>
+				<version>${jersey2.version}</version>
+			</dependency>
+
+			<!-- ==== Jackson ==== -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-json-provider</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-base</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<!-- ==== Mustache ==== -->
+			<dependency>
+				<groupId>com.github.spullara.mustache.java</groupId>
+				<artifactId>compiler</artifactId>
+				<version>${mustache.version}</version>
+			</dependency>
+
+			<!-- ==== args4j ==== -->
+			<dependency>
+				<groupId>args4j</groupId>
+				<artifactId>args4j</artifactId>
+				<version>${args4j.version}</version>
+			</dependency>
+
+			<!-- ==== Apache Commons ==== -->
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons-collections4.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<!-- ==== Guava ==== -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<!-- ==== zt-zip ==== -->
+			<dependency>
+				<groupId>org.zeroturnaround</groupId>
+				<artifactId>zt-zip</artifactId>
+				<version>${zt-zip.version}</version>
+			</dependency>
+
+			<!-- ==== jaxb2 commons ==== -->
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics</artifactId>
+				<version>${jaxb2-basics.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${jaxb2-basics-runtime.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-fluent-api</artifactId>
+				<version>${jaxb2-fluent-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-commons-lang</artifactId>
+				<version>${jaxb2-commons-lang.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-value-constructor</artifactId>
+				<version>${jaxb2-value-constructor.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-annotate</artifactId>
+				<version>${jaxb2-basics-annotate.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- ==== SLF4J ==== -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-ext</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<!-- ==== Logback ==== -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<!-- ==== Janino==== -->
+			<dependency>
+				<groupId>org.codehaus.janino</groupId>
+				<artifactId>commons-compiler</artifactId>
+				<version>${janino.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.janino</groupId>
+				<artifactId>janino</artifactId>
+				<version>${janino.version}</version>
+			</dependency>
+
+			<!-- ==== jUnit ==== -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ==== Hamcrest ==== -->
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-core</artifactId>
+				<version>${hamcrest.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ==== Mockito ==== -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.objenesis</groupId>
+				<artifactId>objenesis</artifactId>
+				<version>${objenesis.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ==== JUnitParams ==== -->
+			<dependency>
+				<groupId>pl.pragmatists</groupId>
+				<artifactId>JUnitParams</artifactId>
+				<version>${JUnitParams.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ==== XMLunit ==== -->
+			<dependency>
+				<groupId>xmlunit</groupId>
+				<artifactId>xmlunit</artifactId>
+				<version>${xmlunit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- ==== openpojo ==== -->
+			<dependency>
+				<groupId>com.googlecode.openpojo</groupId>
+				<artifactId>openpojo</artifactId>
+				<version>${openpojo.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+
+		<pluginManagement>
+			<plugins>
+
+				<!-- ==== Compiler ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<encoding>${javac.encoding}</encoding>
+						<source>${javac.source.version}</source>
+						<target>${javac.target.version}</target>
+						<!-- <compilerArgument>-Xlint:all</compilerArgument> -->
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+						<optimize>true</optimize>
+						<!-- <debug>true</debug> -->
+					</configuration>
+				</plugin>
+
+				<!-- ==== Resources ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== JAR packager ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+							<addMavenDescriptor>false</addMavenDescriptor>
+							<manifestEntries>
+								<Project-name>${project.name}</Project-name>
+								<Project-version>${project.version}</Project-version>
+								<build-date>${maven.build.timestamp}</build-date>
+								<revision>${buildNumber}</revision>
+								<branche>${scmBranch}</branche>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<!-- ==== Versions ==== -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== Dependency ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+					<configuration>
+						<ignoreNonCompile>true</ignoreNonCompile>
+					</configuration>
+				</plugin>
+
+				<!-- ==== Surefire (for execute UnitTest) ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== Failsate Surefire (for execute UnitTest) ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven-failsafe-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== Enforcer ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+					<configuration>
+						<rules>
+							<requireJavaVersion>
+								<version>[${javac.target.version},)</version>
+								<message>[ERROR] The currently supported version of Java is ${javac.target.version} or higher</message>
+							</requireJavaVersion>
+							<requireMavenVersion>
+								<version>[${prerequisites.maven.version},)</version>
+								<message>[ERROR] The currently supported version of Maven is ${prerequisites.maven.version} or higher</message>
+							</requireMavenVersion>
+							<DependencyConvergence />
+							<bannedDependencies>
+								<excludes>
+									<exclude>*:commons-logging</exclude>
+									<exclude>*:log4j</exclude>
+								</excludes>
+								<message>[ERROR] Best Practice is to always use SFL4J !</message>
+							</bannedDependencies>
+							<requirePluginVersions>
+								<banLatest>true</banLatest>
+								<banRelease>true</banRelease>
+								<banSnapshots>true</banSnapshots>
+								<phases>clean,deploy,site</phases>
+								<message>[ERROR] Best Practice is to always define plugin
+									versions !</message>
+							</requirePluginVersions>
+						</rules>
+						<fail>true</fail>
+					</configuration>
+					<executions>
+						<execution>
+							<id>enforce-struture</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>enforce</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ==== Annotations Processors ==== -->
+				<plugin>
+					<groupId>com.mysema.maven</groupId>
+					<artifactId>apt-maven-plugin</artifactId>
+					<version>${apt-maven-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== JAXB generator ==== -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>${jaxb2-maven-plugin.version}</version>
+					<configuration>
+						<!-- <npa>true</npa> -->
+						<extension>true</extension>
+						<arguments>-Xcommons-lang -Xfluent-api -Xvalue-constructor -Xsetters -Xsetters-mode=direct -Xinheritance</arguments>
+						<!-- -XtoString -Xequals -XhashCode -Xsetters -Xsetters-mode=direct -Xinheritance -mark-generated -Xannotate -Xmergeable -->
+					</configuration>
+					<dependencies>
+						<!-- comment because bug ! security read failed -->
+						<!-- <dependency> -->
+						<!-- <groupId>com.sun.xml.bind</groupId> -->
+						<!-- <artifactId>jaxb-xjc</artifactId> -->
+						<!-- <version>2.2.7</version> -->
+						<!-- </dependency> -->
+						<!-- Libs for cutomized generated classes -->
+						<dependency>
+							<!-- http://confluence.highsource.org/display/J2B/JAXB2+Basics+Plugins -->
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>${jaxb2-basics.version}</version>
+						</dependency>
+						<dependency>
+							<!-- https://java.net/projects/jaxb2-commons/pages/Fluent-api -->
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-fluent-api</artifactId>
+							<version>${jaxb2-fluent-api.version}</version>
+						</dependency>
+						<dependency>
+							<!-- https://java.net/projects/jaxb2-commons/pages/Commons-lang -->
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-commons-lang</artifactId>
+							<version>${jaxb2-commons-lang.version}</version>
+						</dependency>
+						<dependency>
+							<!-- https://java.net/projects/jaxb2-commons/pages/Value-constructor -->
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-value-constructor</artifactId>
+							<version>${jaxb2-value-constructor.version}</version>
+						</dependency>
+						<!-- http://confluence.highsource.org/display/J2B/Annotate+Plugin -->
+						<!-- comment because related to xjc 2.2.7 and this security bug -->
+						<!-- <dependency> -->
+						<!-- <groupId>org.jvnet.jaxb2_commons</groupId> -->
+						<!-- <artifactId>jaxb2-basics-annotate</artifactId> -->
+						<!-- <version>${jaxb2-basics-annotate.version}</version> -->
+						<!-- </dependency> -->
+					</dependencies>
+				</plugin>
+
+				<!-- ==== Wro4j ==== -->
+				<plugin>
+					<groupId>ro.isdc.wro4j</groupId>
+					<artifactId>wro4j-maven-plugin</artifactId>
+					<version>${wro4j-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>manage-assets</id>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<!-- <targetGroups>myapp${minifier.suffix},myapp.head${minifier.suffix},myapp.tail${minifier.suffix},myapp.compfurniture.head${minifier.suffix},myapp.compfurniture.tail${minifier.suffix},myapp.compfurniture${minifier.suffix},myapp.compfurniture.oldie${minifier.suffix},myapp.oldie${minifier.suffix},myapp.public${minifier.suffix}</targetGroups> -->
+								<!-- <minimize>true</minimize> -->
+								<!-- <ignoreMissingResources>false</ignoreMissingResources> -->
+								<!-- By default : <contextFolder>${basedir}/src/main/webapp/</contextFolder> -->
+								<destinationFolder>${project.build.directory}/${project.build.finalName}/resources/</destinationFolder>
+								<!-- <cssDestinationFolder>${assets.folder.aggregate}/css</cssDestinationFolder> -->
+								<!-- <jsDestinationFolder>${assets.folder.aggregate}/js</jsDestinationFolder> -->
+								<!-- By default : <extraConfigFile>/WEB-INF/wro.properties</extraConfigFile> -->
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>ro.isdc.wro4j</groupId>
+							<artifactId>wro4j-extensions</artifactId>
+							<version>${vro4j.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- ==== Source ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>bind-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+							<configuration>
+								<quiet>true</quiet>
+								<manifest>
+									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								</manifest>
+								<manifestEntries>
+									<Implementation-Build-Date>${maven.build.timestamp}</Implementation-Build-Date>
+									<X-Compile-Source-JDK>${javac.source.version}</X-Compile-Source-JDK>
+									<X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
+								</manifestEntries>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ==== Javadoc ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+							<configuration>
+								<quiet>true</quiet>
+								<manifest>
+									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								</manifest>
+								<manifestEntries>
+									<Implementation-Build-Date>${maven.build.timestamp}</Implementation-Build-Date>
+									<X-Compile-Source-JDK>${javac.source.version}</X-Compile-Source-JDK>
+									<X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
+								</manifestEntries>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- ==== Assembly ==== -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+	<reporting>
+		<plugins>
+			<!-- ==== JXR ==== -->
+			<!-- The JXR Plugin produces a cross-reference of the project's sources. -->
+			<!-- The generated reports make it easier for the user to reference or find specific lines of code. It is also handy when used with the PMD Plugin for referencing errors found in the code. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven-jxr-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Project Info Reports ==== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>${maven-project-info-reports-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Javadoc ==== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Taglist ==== -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>${taglist-maven-plugin.version}</version>
+				<configuration>
+					<tagListOptions>
+						<tagClasses>
+							<tagClass>
+								<displayName>Todo Work</displayName>
+								<tags>
+									<tag>
+										<matchString>todo</matchString>
+										<matchType>ignoreCase</matchType>
+									</tag>
+									<tag>
+										<matchString>FIXME</matchString>
+										<matchType>exact</matchType>
+									</tag>
+								</tags>
+							</tagClass>
+						</tagClasses>
+					</tagListOptions>
+				</configuration>
+			</plugin>
+
+			<!-- ==== Surefire ==== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>${maven-surefire-report-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Cobertura reports ==== -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${cobertura-maven-plugin.version}</version>
+				<configuration>
+					<formats>
+						<format>xml</format>
+						<format>html</format>
+					</formats>
+				</configuration>
+			</plugin>
+
+			<!-- ==== PMD ==== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven-pmd-plugin.version}</version>
+				<configuration>
+					<targetJdk>${javac.target.version}</targetJdk>
+					<sourceEncoding>${project.reporting.outputEncoding}</sourceEncoding>
+					<linkXref>true</linkXref>
+				</configuration>
+			</plugin>
+
+			<!-- ==== Checkstyle ==== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Findbugs ==== -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs-maven-plugin.version}</version>
+			</plugin>
+
+			<!-- ==== Versions Reports ==== -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<profiles>
+		<profile>
+			<id>PROD</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>analyze</id>
+			<!-- run with goal : validate -->
+			<!-- or versions:display-dependency-updates versions:display-plugin-updates dependency:analyze -->
+			<build>
+				<plugins>
+					<!-- ==== Versions ==== -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>validate</phase>
+								<goals>
+									<goal>display-dependency-updates</goal>
+									<goal>display-plugin-updates</goal>
+									<goal>display-property-updates</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- ==== Dependency ==== -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>validate</phase>
+								<goals>
+									<goal>analyze</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
