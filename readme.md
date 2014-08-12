@@ -24,31 +24,31 @@ Détail:
 
 ### Jar Analysis ###
 
-2 options :
-
-- une seul jar
-- un dossier contenant des jars (récursif ?)
+- un seul jar
+- un dossier contenant des jars (récursif ou non)
 
 
 ### Maven Search ###
 
 Nexus :
 
-- oss.sonatype.org : 2.9.0-04
-- repository.sonatype.org : 2.9.0-04
-- maven.java.net : 2.8.1-01
-- maven.atlassian.com : 2.8.1-01
-- nexus.codehaus.org : 2.8.1-01
-- repository.apache.org : 2.7.2-03
+- [oss.sonatype.org](https://oss.sonatype.org) : 2.9.0-04
+- [repository.sonatype.org](https://repository.sonatype.org) : 2.9.0-04
+- [maven.java.net](https://maven.java.net) : 2.8.1-01
+- [maven.atlassian.com](https://maven.atlassian.com) : 2.8.1-01
+- [nexus.codehaus.org](https://nexus.codehaus.org) : 2.8.1-01
+- [repository.apache.org](https://repository.apache.org) : 2.7.2-03
 
 
 #### Checksum ####
 
-Calcul du SHA1 et recherche, le résultat est forcément unique ou null. 
+Calcul du SHA1 et recherche, le résultat est forcément unique ou null.
+
+**Attention** : `da39a3ee5e6b4b0d3255bfef95601890afd80709` qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` du Nexus ne retourne qu'une seule valeur sans cohérence.
 
 #### Artifact id ####
 
-Récuppération du nom de fichier, le résultat est une liste de 0 a n éléments.
+Récuppération du nom de fichier, le résultat est une liste de 0 à n éléments.
 
 #### Class name ####
 
@@ -57,12 +57,9 @@ Question : comment faire pour trouver la classe la plus pertinente ?
 
 ### POM build ###
 
-2 sorties possible :
+Sorties sous forme fichier XML [Partial POM].
 
-- console (default)
-- fichier : POM, text, ... > à voir quel type choisir suivant les différents types de recherche.
-
-Pour les fichiers, je n'ai pas encore décidé comment faire précisement pour les cas de recherche par artifactId et ClassName.
+Pour les fichiers, je n'ai pas encore décidé comment faire précisement pour les cas de recherche par `artifactId` et `ClassName`.
 
 
 ## Technologies ##
@@ -71,7 +68,7 @@ Pour les fichiers, je n'ai pas encore décidé comment faire précisement pour l
 - `NIO2` : pour la recherche des fichiers JAR.
 - `Guava` : calcul de SHA1 du contenu des fichiers JAR.
 - `args4j` : interface et option pour la ligne de commande
-- ? : Rest client
+- `Jersey` : Rest client
 
 
 ## REST API ##
@@ -101,7 +98,7 @@ Nexus Indexer Lucene Plugin REST API
 - Le service supporte des réponses en XML ou JSON uniquement pour certaines ressources.
 - La définition XSD est disponible pour le XML unquement pour une partie des ressources.
 
-**Attention** : da39a3ee5e6b4b0d3255bfef95601890afd80709 qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` ne retourne qu'une seule valeur sans cohérence.
+**Attention** : `da39a3ee5e6b4b0d3255bfef95601890afd80709` qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` ne retourne qu'une seule valeur sans cohérence.
 
 Example :
 
@@ -133,7 +130,7 @@ Example :
  - groupId (groupIdDefault: unknownGroupId)
  - artifactId (nom du jar par défault)
  - version (versionDefault: 0.0.0)
- - package (packageDefault: jar)
+ - classifier ?
 
 
 
