@@ -5,7 +5,7 @@
 
 Outils en ligne de commande permattant de produire un POM à partir d'un ou plusieurs JAR.
 
-Basé sur l'idée [Provenance](https://github.com/armhold/Provenance) de George Armhold.
+Basé sur l'idée [Provenance](https://github.com/armhold/Provenance) de [George Armhold](http://armhold.com).
 
 
 ## Explication ##
@@ -69,6 +69,7 @@ Pour les fichiers, je n'ai pas encore décidé comment faire précisement pour l
 - `Guava` : calcul de SHA1 du contenu des fichiers JAR.
 - `args4j` : interface et option pour la ligne de commande
 - `Jersey` : Rest client
+- `Mustache-java` : Templating du fichier de sortie
 
 
 ## REST API ##
