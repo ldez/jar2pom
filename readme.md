@@ -79,8 +79,8 @@ Nexus:
 Search type:
 
 - Checksum (SHA1).
-- Artifact id ?
-- Class name ?
+- ~~Artifact id~~
+- ~~Class name~~
 
 ### POM build ###
 
