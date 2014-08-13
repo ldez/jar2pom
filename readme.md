@@ -1,5 +1,6 @@
 # JAR2POM #
 
+[![Build Status](https://travis-ci.org/ldez/jar2pom.svg?branch=master)](https://travis-ci.org/ldez/jar2pom)
 
 ## Résumé ##
 
