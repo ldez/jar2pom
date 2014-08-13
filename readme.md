@@ -20,15 +20,15 @@ In the directory where the pom.xml is, run:
 
 ## Run like ##
 
-    $ java -jar jar2pom.jar
+    java -jar jar2pom.jar
     
 or
 
-    $ java -jar jar2pom.jar -host 192.168.0.1 -i "c:\myProjet\source" -o "c:\output" -p -r
+    java -jar jar2pom.jar -host 192.168.0.1 -i "c:\myProjet\source" -o "c:\output" -p -r
 
 Show all options:
 
-    $ java -jar jar2pom.jar -h  
+    java -jar jar2pom.jar -h  
 
 Options (no options are mandatory):
     
