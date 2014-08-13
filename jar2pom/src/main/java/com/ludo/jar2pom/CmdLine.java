@@ -130,7 +130,7 @@ public class CmdLine {
                 final List<Descriptor> descriptors = fileVisitor.getDescriptors();
 
                 // write output file
-                this.writeOutputFile(descriptors);
+                this.writeOutputFile(descriptors, this.output);
             }
         } catch (final CmdLineException e) {
             // if there's a problem in the command line, you'll get this exception. this will report an error message.
@@ -165,7 +165,7 @@ public class CmdLine {
         }
     }
 
-    protected final void writeOutputFile(final List<Descriptor> descriptors) {
+    protected final void writeOutputFile(final List<Descriptor> descriptors, final Path file) {
         Objects.requireNonNull(descriptors, "Descriptors cannot be null.");
 
         // create and load template
@@ -178,7 +178,7 @@ public class CmdLine {
 
         // create output file path
         final String fileName = String.format(OUTPUT_POM_PATTERN, new Date());
-        final Path outputPom = this.output.resolve(fileName);
+        final Path outputPom = file.resolve(fileName);
 
         // write file
         try (Writer writer = new FileWriter(outputPom.toFile())) {
