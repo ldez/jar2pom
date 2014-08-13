@@ -42,6 +42,16 @@ Options (no options are mandatory):
      -r           : inspect input path recursively.
 
 
+## Technologies ##
+
+- `Java 7`
+- [args4j](https://github.com/kohsuke/args4j) : interface and options for the command line
+- [NIO.2](http://docs.oracle.com/javase/tutorial/essential/io/fileio.html) : browse JAR files.
+- [Guava](https://code.google.com/p/guava-libraries) : calculating SHA1 from the contents of the JAR files.
+- [Jersey](https://jersey.java.net/) : Rest client
+- [mustache.java](https://github.com/spullara/mustache.java) : generation of the output file
+
+
 ## Explanation ##
 
 - Browse and detect all jars.
@@ -77,29 +87,7 @@ Search type:
 Output as an XML file [Partial POM].
 
 
-## Technologies ##
-
-- `Java 7`
-- `NIO2` : browse JAR files.
-- `Guava` : calculating SHA1 from the contents of the JAR files.
-- `args4j` : interface and options for the command line
-- `Jersey` : Rest client
-- `Mustache-java` : generation of the output file
-
-
 ## REST API ##
-
-### Maven Central ###
-
-- [Maven Central - Sonatype - API](http://search.maven.org/#api)
-
-Le service supporte des réponses en XML ou JSON.
-Aucune définition XSD n'est disponible pour le XML.
-
-Attention : la response ne correspond pas à l'artifact mais au "bundle", ie toutes les checksum d'un ensemble retourne toujours la même réponse.
-
-ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f331542b4e9ae2e566c57933"&rows=20&wt=json)
-
 
 ### Nexus ###
 
@@ -129,8 +117,19 @@ Example :
 - [Sonatype OSS - Nexus Core API (Restlet 1.x Plugin) REST API](https://oss.sonatype.org/nexus-restlet1x-plugin/default/docs/index.html)
 - [Sonatype RSO - Nexus Core API (Restlet 1.x Plugin) REST API](https://repository.sonatype.org/nexus-restlet1x-plugin/default/docs/index.html)
 
+### Maven Central ###
 
-## Descriptor ##
+- [Maven Central - Sonatype - API](http://search.maven.org/#api)
+
+Le service supporte des réponses en XML ou JSON.
+Aucune définition XSD n'est disponible pour le XML.
+
+Attention : la response ne correspond pas à l'artifact mais au "bundle", ie toutes les checksum d'un ensemble retourne toujours la même réponse.
+
+ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f331542b4e9ae2e566c57933"&rows=20&wt=json)
+
+
+## XML file ##
 
 - source url
 - absolute input file path
