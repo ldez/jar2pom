@@ -131,6 +131,15 @@ ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f33
 
 ## XML file ##
 
+```xml
+    <!-- source url / file path -->
+    <dependency>
+        <groupId>groupId</groupId>
+        <artifactId>artifactId</artifactId>
+        <version>version</version>
+    </dependency>
+```
+
 - source url
 - absolute input file path
 - artifact :
@@ -138,6 +147,4 @@ ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f33
  - artifactId (jar name by default)
  - version (version by default: 0.0.0)
  - classifier ?
-
-
 
