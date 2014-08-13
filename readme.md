@@ -23,6 +23,37 @@ Détail:
 - gestion de proxy (uniquement system pour l'instant)
 - ? : recherche avec utilisation du nom du jar pour artifact Id
 
+
+
+## Build ##
+
+In the directory where the pom.xml is, run:
+
+    mvn clean package
+
+## Run like ##
+
+    $ java -jar jar2pom.jar
+    
+or
+
+    $ java -jar jar2pom.jar -host 192.168.0.1 -i "c:\myProjet\source" -o "c:\output" -p -r
+
+Show all options:
+
+    $ java -jar jar2pom.jar -h  
+
+Options (all options are NOT required):
+    
+     -h (--help)  : display help.
+     -host HOST   : defined custom Nexus host.
+                    (ex: oss.sonatype.org)
+     -i INPUT     : input path (file or directory).
+     -o OUTPUT    : directory output path.
+                    (default output is console)
+     -p (--proxy) : Use system proxies.
+     -r           : inspect input path recursively.
+
 ### Jar Analysis ###
 
 - un seul jar

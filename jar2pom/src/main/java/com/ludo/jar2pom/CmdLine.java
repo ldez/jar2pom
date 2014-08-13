@@ -141,7 +141,7 @@ public class CmdLine {
     }
 
     private void printHelp(final CmdLineParser parser, final PrintStream printStream) {
-        printStream.println("java -jar jar2pom.jar [options...]%n");
+        printStream.println("java -jar jar2pom.jar [options...]");
         // print the list of available options
         parser.printUsage(printStream);
         // print options sample
