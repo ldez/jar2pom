@@ -101,9 +101,8 @@ La définition XSD est disponible pour le XML uniquement pour une partie des res
 
 ##### Warning #####
 
-Bug with `Nexus Indexer Lucene Plugin REST API` XSD : [NEXUS-6755](https://issues.sonatype.org/browse/NEXUS-6755)
-
-`da39a3ee5e6b4b0d3255bfef95601890afd80709` qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` ne retourne qu'une seule valeur sans cohérence.
+- Bug with `Nexus Indexer Lucene Plugin REST API` XSD : [NEXUS-6755](https://issues.sonatype.org/browse/NEXUS-6755)
+- `da39a3ee5e6b4b0d3255bfef95601890afd80709` qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` ne retourne qu'une seule valeur sans cohérence.
 
 Example :
 
@@ -124,7 +123,7 @@ Example :
 Le service supporte des réponses en XML ou JSON.
 Aucune définition XSD n'est disponible pour le XML.
 
-Attention : la response ne correspond pas à l'artifact mais au "bundle", ie toutes les checksum d'un ensemble retourne toujours la même réponse.
+**Warning** : la response ne correspond pas à l'artifact mais au "bundle", ie toutes les checksum d'un ensemble retourne toujours la même réponse.
 
 ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f331542b4e9ae2e566c57933"&rows=20&wt=json)
 
@@ -146,5 +145,5 @@ ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f33
  - groupId (groupId by default: unknownGroupId)
  - artifactId (jar name by default)
  - version (version by default: 0.0.0)
- - classifier ?
+ - ~~classifier~~
 
