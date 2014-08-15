@@ -99,6 +99,8 @@
 		<apt-maven-plugin.version>1.1.1</apt-maven-plugin.version>
 		<jaxb2-maven-plugin.version>1.5</jaxb2-maven-plugin.version>
 
+		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
+
 		<!-- ==== Report plugin's versions ==== -->
 		<maven-surefire-report-plugin.version>2.16</maven-surefire-report-plugin.version>
 		<maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
@@ -108,7 +110,6 @@
 		<findbugs-maven-plugin.version>2.5.3</findbugs-maven-plugin.version>
 		<maven-checkstyle-plugin.version>2.10</maven-checkstyle-plugin.version>
 		<maven-pmd-plugin.version>3.0.1</maven-pmd-plugin.version>
-		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
 	</properties>
 
 	<prerequisites>
@@ -636,6 +637,20 @@
 					<version>${maven-shade-plugin.version}</version>
 				</plugin>
 
+				<!-- ==== coveralls ==== -->
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>${coveralls-maven-plugin.version}</version>
+				</plugin>
+
+				<!-- ==== Cobertura reports ==== -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>${cobertura-maven-plugin.version}</version>
+				</plugin>
+
 			</plugins>
 		</pluginManagement>
 
@@ -657,13 +672,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>${maven-project-info-reports-plugin.version}</version>
-			</plugin>
-
-			<!-- ==== coveralls ==== -->
-			<plugin>
-				<groupId>org.eluder.coveralls</groupId>
-				<artifactId>coveralls-maven-plugin</artifactId>
-				<version>${coveralls-maven-plugin.version}</version>
 			</plugin>
 
 			<!-- ==== Javadoc ==== -->
