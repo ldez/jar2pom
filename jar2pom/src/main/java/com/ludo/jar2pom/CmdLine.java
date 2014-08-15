@@ -97,13 +97,13 @@ public class CmdLine implements Arguments {
             // parse the arguments.
             parser.parseArgument(args);
 
-            if (this.help) {
+            if (this.isHelp()) {
                 this.printHelp(parser, System.out);
             } else {
                 LOG.debug("Input: {}", this.input);
 
                 // set the use of system proxies
-                if (this.systemProxy) {
+                if (this.isSystemProxy()) {
                     System.setProperty("java.net.useSystemProxies", "true");
                 }
 

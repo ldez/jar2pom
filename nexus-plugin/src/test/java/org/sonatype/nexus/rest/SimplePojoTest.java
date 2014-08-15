@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.sonatype.nexus.rest.custom.ObjectFactory;
 
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.impl.PojoClassFactory;
@@ -16,49 +17,39 @@ import com.openpojo.validation.rule.impl.SerializableMustHaveSerialVersionUIDRul
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.DefaultValuesNullTester;
 import com.openpojo.validation.test.impl.GetterTester;
+import com.openpojo.validation.test.impl.SetterTester;
 
 public class SimplePojoTest {
-    // Configured for expectation, so we know when a class gets added or
-    // removed.
+
     private static final int EXPECTED_CLASS_COUNT = 17;
 
-    // The package to test
-    private static final String POJO_PACKAGE = "org.sonatype.nexus.rest.custom";
-
     private List<PojoClass> pojoClasses;
+
     private PojoValidator pojoValidator;
 
     @Before
     public void setup() {
-
-        // this.pojoClasses = PojoClassFactory.getPojoClasses(POJO_PACKAGE, new
-        // FilterBasedOnInheritance(AramisModel.class));
-        this.pojoClasses = PojoClassFactory.getPojoClasses(POJO_PACKAGE);
+        // The package to test
+        final String packageName = ObjectFactory.class.getPackage().getName();
+        this.pojoClasses = PojoClassFactory.getPojoClasses(packageName);
 
         this.pojoValidator = new PojoValidator();
 
         // Create Rules to validate structure for POJO_PACKAGE
         this.pojoValidator.addRule(new NoPublicFieldsRule());
-        // this.pojoValidator.addRule(new NoPrimitivesRule());
         this.pojoValidator.addRule(new NoStaticExceptFinalRule());
         this.pojoValidator.addRule(new GetterMustExistRule());
         this.pojoValidator.addRule(new SetterMustExistRule());
-        // this.pojoValidator.addRule(new NoNestedClassRule());
-        // this.pojoValidator.addRule(new NoFieldShadowingRule());
         this.pojoValidator.addRule(new SerializableMustHaveSerialVersionUIDRule());
 
         // Create Testers to validate behaviour for POJO_PACKAGE
         this.pojoValidator.addTester(new DefaultValuesNullTester());
-        // this.pojoValidator.addTester(new SetterTester());
+        this.pojoValidator.addTester(new SetterTester());
         this.pojoValidator.addTester(new GetterTester());
     }
 
     @Test
     public void ensureExpectedPojoCount() {
-        // for (final PojoClass pjc : this.pojoClasses) {
-        // System.out.println(pjc.getName());
-        // }
-
         Affirm.affirmEquals("Classes added / removed?", EXPECTED_CLASS_COUNT, this.pojoClasses.size());
     }
 
