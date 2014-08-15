@@ -2,6 +2,8 @@ package com.ludo.jar2pom.core.file;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,9 +14,7 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
@@ -36,9 +36,9 @@ public class FileJarVisitorTest {
     ArgumentCaptor<Path> pathCaptor;
 
     @Test
-    public void testName() throws Exception {
+    public void visit() throws Exception {
 
-        Mockito.when(this.descriptorStrategy.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "foobar";

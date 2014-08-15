@@ -12,11 +12,15 @@ import java.util.List;
 import java.util.Objects;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ludo.jar2pom.core.model.Descriptor;
 import com.ludo.jar2pom.core.remote.DescriptorStrategy;
 
 public class FileJarVisitor extends SimpleFileVisitor<Path> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FileJarVisitor.class);
 
     public static final PathMatcher JAR_MATCHER = FileSystems.getDefault().getPathMatcher("glob:**/*.jar");
 
@@ -39,11 +43,13 @@ public class FileJarVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
+        super.visitFile(file, attrs);
 
         if (JAR_MATCHER.matches(file)) {
+            LOG.debug("file: {}", file);
             this.process(file);
         }
-        return super.visitFile(file, attrs);
+        return FileVisitResult.CONTINUE;
     }
 
     protected final void process(final Path file) throws IOException {

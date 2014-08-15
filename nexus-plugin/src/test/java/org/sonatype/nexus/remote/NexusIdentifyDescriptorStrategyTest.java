@@ -1,6 +1,8 @@
 package org.sonatype.nexus.remote;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
 
 import java.net.URI;
 import java.nio.file.Path;
@@ -11,9 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.sonatype.nexus.json.Answer;
 
@@ -52,7 +52,7 @@ public class NexusIdentifyDescriptorStrategyTest {
         final Answer answer = new Answer();
         answer.setArtifactId("artifactId");
 
-        Mockito.when(this.response.readEntity(Matchers.eq(Answer.class))).thenReturn(answer);
+        when(this.response.readEntity(eq(Answer.class))).thenReturn(answer);
 
         final Dependency dependency = this.descriptorStrategy.extractDependency(this.response);
 

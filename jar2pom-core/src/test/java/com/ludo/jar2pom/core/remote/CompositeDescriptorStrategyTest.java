@@ -2,6 +2,8 @@ package com.ludo.jar2pom.core.remote;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 import java.nio.file.Path;
 
@@ -11,9 +13,7 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
@@ -38,7 +38,7 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesFail() throws Exception {
-        Mockito.when(this.descriptorStrategy01.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy01";
@@ -47,7 +47,7 @@ public class CompositeDescriptorStrategyTest {
                 return new Descriptor(sourceName, file, dependency, false);
             }
         });
-        Mockito.when(this.descriptorStrategy02.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy02";
@@ -69,7 +69,7 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesSecondFound() throws Exception {
-        Mockito.when(this.descriptorStrategy01.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy01";
@@ -78,7 +78,7 @@ public class CompositeDescriptorStrategyTest {
                 return new Descriptor(sourceName, file, dependency, false);
             }
         });
-        Mockito.when(this.descriptorStrategy02.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy02";
@@ -100,7 +100,7 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesFirstFound() throws Exception {
-        Mockito.when(this.descriptorStrategy01.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy01";
@@ -109,7 +109,7 @@ public class CompositeDescriptorStrategyTest {
                 return new Descriptor(sourceName, file, dependency, true);
             }
         });
-        Mockito.when(this.descriptorStrategy02.search(this.pathCaptor.capture(), Matchers.anyString())).then(new Answer<Descriptor>() {
+        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
             @Override
             public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
                 final String sourceName = "descriptorStrategy02";
