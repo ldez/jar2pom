@@ -1,5 +1,7 @@
 package org.maven.search.rest.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Params {
 
     private String fl;
@@ -68,23 +70,7 @@ public class Params {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Params [fl=");
-        builder.append(this.fl);
-        builder.append(", sort=");
-        builder.append(this.sort);
-        builder.append(", indent=");
-        builder.append(this.indent);
-        builder.append(", q=");
-        builder.append(this.q);
-        builder.append(", wt=");
-        builder.append(this.wt);
-        builder.append(", rows=");
-        builder.append(this.rows);
-        builder.append(", version=");
-        builder.append(this.version);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

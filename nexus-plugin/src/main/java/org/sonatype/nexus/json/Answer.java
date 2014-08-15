@@ -1,5 +1,7 @@
 package org.sonatype.nexus.json;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Answer {
 
     private String resourceURI;
@@ -104,31 +106,7 @@ public class Answer {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Answer [resourceURI=");
-        builder.append(this.resourceURI);
-        builder.append(", groupId=");
-        builder.append(this.groupId);
-        builder.append(", artifactId=");
-        builder.append(this.artifactId);
-        builder.append(", version=");
-        builder.append(this.version);
-        builder.append(", classifier=");
-        builder.append(this.classifier);
-        builder.append(", packaging=");
-        builder.append(this.packaging);
-        builder.append(", extension=");
-        builder.append(this.extension);
-        builder.append(", repoId=");
-        builder.append(this.repoId);
-        builder.append(", contextId=");
-        builder.append(this.contextId);
-        builder.append(", pomLink=");
-        builder.append(this.pomLink);
-        builder.append(", artifactLink=");
-        builder.append(this.artifactLink);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

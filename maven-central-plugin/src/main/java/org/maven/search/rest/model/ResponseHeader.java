@@ -1,5 +1,7 @@
 package org.maven.search.rest.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,13 +31,7 @@ public class ResponseHeader {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("ResponseHeader [status=");
-        builder.append(this.status);
-        builder.append(", params=");
-        builder.append(this.params);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

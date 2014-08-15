@@ -1,5 +1,7 @@
 package org.maven.search.rest.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Answer {
 
     private ResponseHeader responseHeader;
@@ -24,13 +26,7 @@ public class Answer {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Answer [responseHeader=");
-        builder.append(this.responseHeader);
-        builder.append(", response=");
-        builder.append(this.response);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

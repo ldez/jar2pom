@@ -2,6 +2,8 @@ package org.maven.search.rest.model;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Response {
 
     private Long numFound;
@@ -36,15 +38,7 @@ public class Response {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Response [numFound=");
-        builder.append(this.numFound);
-        builder.append(", start=");
-        builder.append(this.start);
-        builder.append(", docs=");
-        builder.append(this.docs);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

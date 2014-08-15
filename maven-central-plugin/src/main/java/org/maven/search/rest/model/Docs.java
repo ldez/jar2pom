@@ -2,6 +2,8 @@ package org.maven.search.rest.model;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -73,23 +75,7 @@ public class Docs {
 
     @Override
     public final String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Docs [id=");
-        builder.append(this.id);
-        builder.append(", g=");
-        builder.append(this.g);
-        builder.append(", a=");
-        builder.append(this.a);
-        builder.append(", v=");
-        builder.append(this.v);
-        builder.append(", p=");
-        builder.append(this.p);
-        builder.append(", tags=");
-        builder.append(this.tags);
-        builder.append(", ec=");
-        builder.append(this.ec);
-        builder.append("]");
-        return builder.toString();
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

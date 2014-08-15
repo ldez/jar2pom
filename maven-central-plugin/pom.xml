@@ -33,6 +33,13 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 
+		<!-- ==== Logback ==== -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- ===== jUnit ===== -->
 		<dependency>
 			<groupId>junit</groupId>
