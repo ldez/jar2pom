@@ -1,7 +1,6 @@
 # JAR2POM #
 
 [![Build Status](https://travis-ci.org/ldez/jar2pom.svg?branch=master)](https://travis-ci.org/ldez/jar2pom)
-[![Coverage Status](https://coveralls.io/repos/ldez/jar2pom/badge.png)](https://coveralls.io/r/ldez/jar2pom)
 
 
 ## Summary ##
