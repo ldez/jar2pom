@@ -125,18 +125,6 @@
 				</executions>
 			</plugin>
 
-			<!-- ==== coveralls ==== -->
-			<plugin>
-				<groupId>org.eluder.coveralls</groupId>
-				<artifactId>coveralls-maven-plugin</artifactId>
-				<configuration>
-					<sourceDirectories>
-						<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
-						<sourceDirectory>${project.build.directory}\generated-sources\jaxb</sourceDirectory>
-					</sourceDirectories>
-				</configuration>
-			</plugin>
-
 		</plugins>
 	</build>
 
