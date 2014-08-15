@@ -5,4 +5,4 @@ jdk:
 
 
 after_success:
-  - mvn clean cobertura:cobertura coveralls:cobertura
+  - mvn -B clean cobertura:cobertura coveralls:cobertura
