@@ -2,3 +2,18 @@ language: java
 jdk:
 - oraclejdk7
 - oraclejdk8
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "iLRL/C/5uMMMVhxunh8kvXTGC2Sq2AB4BPu1OlIGDRUWhMd665xkepCcIMuh3liMmHET3LIWZsIg0hcV2ONcDU1xvT+RbxKX9NVtYsTFP6GBOeJJvKj+gHgsDiiiqlyqIeQvat1sAq9+NX+V1ySQk4ucJxIcqG1SJ8oyuGKCeBQ="
+
+addons:
+  coverity_scan:
+    project:
+      name: "ldez/jar2pom"
+      description: "Build submitted via Travis CI"
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
+    branch_pattern: coverity_scan

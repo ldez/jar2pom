@@ -1,7 +1,7 @@
 # JAR2POM #
 
 [![Build Status](https://travis-ci.org/ldez/jar2pom.svg?branch=master)](https://travis-ci.org/ldez/jar2pom)
-
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/2805/badge.svg)
 
 ## Summary ##
 
