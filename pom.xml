@@ -664,6 +664,16 @@
 						<maxmem>256m</maxmem>
 						<!-- aggregated reports for multi-module projects -->
 						<aggregate>true</aggregate>
+						<instrumentation>
+							<ignores>
+								<ignore>org.sonatype.nexus.rest.custom.*</ignore>
+								<ignore>org.sonatype.nexus.rest.model.*</ignore>
+							</ignores>
+							<excludes>
+								<exclude>org/sonatype/nexus/rest/custom/*.*</exclude>
+								<exclude>org/sonatype/nexus/rest/model/*.*</exclude>
+							</excludes>
+						</instrumentation>
 					</configuration>
 				</plugin>
 
