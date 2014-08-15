@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration debug="false" scan="true">
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<encoder>
+			<pattern>%-27(%d [%thread] %-5level) - %logger{36} - %msg%n%ex{short}</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.sonatype.nexus" level="DEBUG" />
+
+	<root level="WARN">
+		<appender-ref ref="consoleAppender" />
+	</root>
+
+</configuration>

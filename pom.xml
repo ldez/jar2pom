@@ -20,6 +20,11 @@
 		<url>https://travis-ci.org/ldez/jar2pom</url>
 	</ciManagement>
 
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/ldez/jar2pom/issues</url>
+	</issueManagement>
+
 	<developers>
 		<developer>
 			<id>ldez</id>
