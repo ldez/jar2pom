@@ -5,8 +5,15 @@ import org.sonatype.nexus.json.Answer;
 import com.google.common.base.Function;
 import com.ludo.jar2pom.core.model.Dependency;
 
+/**
+ * The Class AnswerTransformer.
+ */
 public class AnswerTransformer implements Function<Answer, Dependency> {
 
+    /*
+     * (non-Javadoc)
+     * @see com.google.common.base.Function#apply(java.lang.Object)
+     */
     @Override
     public final Dependency apply(final Answer input) {
         Dependency dependency = null;

@@ -13,19 +13,34 @@ import org.kohsuke.args4j.spi.OptionHandler;
 import org.kohsuke.args4j.spi.Setter;
 
 /**
- * {@link File} {@link OptionHandler}.
+ * The Class PathOptionHandler. {@link File} {@link OptionHandler}.
  */
 public class PathOptionHandler extends OneArgumentOptionHandler<Path> {
 
+    /**
+     * Instantiates a new path option handler.
+     *
+     * @param parser the parser
+     * @param option the option
+     * @param setter the setter
+     */
     public PathOptionHandler(final CmdLineParser parser, final OptionDef option, final Setter<? super Path> setter) {
         super(parser, option, setter);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.kohsuke.args4j.spi.OneArgumentOptionHandler#parse(java.lang.String)
+     */
     @Override
     protected final Path parse(final String argument) throws CmdLineException {
         return Paths.get(argument);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see org.kohsuke.args4j.spi.OneArgumentOptionHandler#getDefaultMetaVariable()
+     */
     @Override
     public final String getDefaultMetaVariable() {
         return Messages.DEFAULT_META_FILE_OPTION_HANDLER.format();
