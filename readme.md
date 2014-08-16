@@ -1,5 +1,5 @@
 
-![JAR2POM Logo](https://github.com/ldez/jar2pom/blob/master/jar2pom-medium.png)
+[![JAR2POM Logo](https://github.com/ldez/jar2pom/blob/master/jar2pom-medium.png)](https://github.com/ldez/jar2pom)
 
 
 # JAR2POM #
