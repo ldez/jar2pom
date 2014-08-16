@@ -8,6 +8,7 @@
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2805/badge.svg)](https://scan.coverity.com/projects/2805)
 [![Coverage Status](https://coveralls.io/repos/ldez/jar2pom/badge.png)](https://coveralls.io/r/ldez/jar2pom)
 
+
 ## Summary ##
 
 Command line tools for producing a POM from one or more JAR.
@@ -15,6 +16,11 @@ Command line tools for producing a POM from one or more JAR.
     jar → maven search → pom
 
 Based on the idea of [Provenance](https://github.com/armhold/Provenance) by [George Armhold](http://armhold.com).
+
+
+## Download ##
+
+Download version 1.0.0-RELEASE [here](https://dl.dropboxusercontent.com/u/3601798/jar2pom.jar)
 
 
 ## Build ##
