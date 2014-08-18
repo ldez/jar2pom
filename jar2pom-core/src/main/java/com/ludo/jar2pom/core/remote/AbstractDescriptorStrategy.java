@@ -5,10 +5,8 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -31,7 +29,7 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractDescriptorStrategy.class);
 
-    private final Set<String> predefinedHosts = new HashSet<>();
+    private final List<String> predefinedHosts = new ArrayList<>();
 
     private final ClientConfig clientConfig = new ClientConfig();
 
@@ -91,7 +89,9 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
             // Response
             if (response.getStatus() == 200) {
                 final Dependency dependency = this.extractDependency(response);
-                descriptor = new Descriptor(host, file, dependency);
+                if (dependency != null) {
+                    descriptor = new Descriptor(host, file, dependency);
+                }
             }
             response.close();
         }

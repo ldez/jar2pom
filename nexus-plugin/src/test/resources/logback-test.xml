@@ -10,6 +10,7 @@
 	</appender>
 
 	<logger name="org.sonatype.nexus" level="DEBUG" />
+	<logger name="com.ludo.jar2pom.core" level="DEBUG" />
 
 	<root level="WARN">
 		<appender-ref ref="consoleAppender" />
