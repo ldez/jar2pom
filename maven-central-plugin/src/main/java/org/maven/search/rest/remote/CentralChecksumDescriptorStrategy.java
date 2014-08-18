@@ -30,7 +30,7 @@ public class CentralChecksumDescriptorStrategy extends AbstractDescriptorStrateg
     }
 
     @Override
-    protected String extractParameter(final Path file) throws IOException {
+    protected final String extractParameter(final Path file) throws IOException {
         // create Hash
         final HashCode hash = Files.asByteSource(file.toFile()).hash(Hashing.sha1());
 
@@ -39,7 +39,7 @@ public class CentralChecksumDescriptorStrategy extends AbstractDescriptorStrateg
     }
 
     @Override
-    protected URI createUri(final String host, final String parameter) {
+    protected final URI createUri(final String host, final String parameter) {
 
         // URI variables
         final Map<String, Object> uriVariables = new HashMap<>();
@@ -51,7 +51,7 @@ public class CentralChecksumDescriptorStrategy extends AbstractDescriptorStrateg
     }
 
     @Override
-    protected Dependency extractDependency(final Response response) {
+    protected final Dependency extractDependency(final Response response) {
 
         // TODO : ldez - 18 août 2014 : refactor Dependency class before implement
 
