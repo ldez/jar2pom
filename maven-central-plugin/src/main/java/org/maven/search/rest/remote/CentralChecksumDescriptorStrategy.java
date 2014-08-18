@@ -19,13 +19,13 @@ import com.google.common.io.Files;
 import com.ludo.jar2pom.core.model.Dependency;
 import com.ludo.jar2pom.core.remote.AbstractDescriptorStrategy;
 
-public class CentralIdentifyDescriptorStrategy extends AbstractDescriptorStrategy {
+public class CentralChecksumDescriptorStrategy extends AbstractDescriptorStrategy {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CentralIdentifyDescriptorStrategy.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CentralChecksumDescriptorStrategy.class);
 
     public static final String URI_PATTERN = "http://{host}/solrsearch/select?q=1:{hash}&rows=20&wt=json";
 
-    public CentralIdentifyDescriptorStrategy() {
+    public CentralChecksumDescriptorStrategy() {
         super(MediaType.APPLICATION_XML_TYPE, DefaultHost.HOSTS);
     }
 

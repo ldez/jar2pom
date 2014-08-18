@@ -12,12 +12,12 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CentralIdentifyDescriptorStrategyTest {
+public class CentralChecksumDescriptorStrategyTest {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    CentralIdentifyDescriptorStrategy descriptorStrategy = new CentralIdentifyDescriptorStrategy();
+    CentralChecksumDescriptorStrategy descriptorStrategy = new CentralChecksumDescriptorStrategy();
 
     @Test
     public void createUriSuccess() throws Exception {
