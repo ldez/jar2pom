@@ -33,7 +33,7 @@ public class NexusIdentifyDescriptorStrategy extends AbstractDescriptorStrategy 
     private final Function<Answer, Dependency> answerTransformer = new AnswerTransformer();
 
     public NexusIdentifyDescriptorStrategy() {
-        super(MediaType.APPLICATION_JSON_TYPE);
+        super(MediaType.APPLICATION_JSON_TYPE, DefaultHost.HOSTS);
     }
 
     @Override

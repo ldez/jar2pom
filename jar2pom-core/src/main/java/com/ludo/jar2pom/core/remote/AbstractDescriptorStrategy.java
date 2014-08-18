@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -29,14 +31,17 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractDescriptorStrategy.class);
 
-    public static final List<String> PREDEFINED_HOSTS = Arrays.asList("oss.sonatype.org", "repository.sonatype.org", "maven.java.net", "maven.atlassian.com", "nexus.codehaus.org", "repository.apache.org");
+    private final Set<String> predefinedHosts = new HashSet<>();
 
     private final ClientConfig clientConfig = new ClientConfig();
 
     private MediaType mediaType;
 
-    public AbstractDescriptorStrategy(final MediaType mediaType) {
+    public AbstractDescriptorStrategy(final MediaType mediaType, final Collection<String> predefinedHosts) {
         super();
+        Objects.requireNonNull(predefinedHosts, "Predefined hosts cannot be null.");
+        this.predefinedHosts.addAll(predefinedHosts);
+
         this.setMediaType(mediaType);
         this.clientConfig.register(JacksonFeature.class);
     }
@@ -58,7 +63,7 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
         final List<String> hosts = new ArrayList<>();
         // TODO : ldez - 12 août 2014 : additivity option management
         if (StringUtils.isBlank(customHost)) {
-            hosts.addAll(PREDEFINED_HOSTS);
+            hosts.addAll(this.predefinedHosts);
         } else {
             hosts.add(customHost);
         }
