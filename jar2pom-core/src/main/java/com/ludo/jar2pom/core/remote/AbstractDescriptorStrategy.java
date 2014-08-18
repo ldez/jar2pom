@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.slf4j.Logger;
@@ -64,6 +65,7 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
 
         // create Hash
         final String parameter = this.extractParameter(file);
+        Validate.notBlank(parameter, "Parameter cannot be blank.");
 
         // Client
         final Client client = ClientBuilder.newClient(this.clientConfig);
@@ -73,11 +75,13 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
             final String host = hosts.get(i);
 
             // Create URI
+            Validate.notBlank(host, "Host cannot be blank.");
             final URI uri = this.createUri(host, parameter);
             LOG.debug("Host: {}", uri);
 
             // Request
             final Response response = this.get(client, uri);
+            Objects.requireNonNull(response, "Response cannot be null.");
 
             // Response
             if (response.getStatus() == 200) {

@@ -5,13 +5,11 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonatype.nexus.json.Answer;
@@ -50,8 +48,6 @@ public class NexusIdentifyDescriptorStrategy extends AbstractDescriptorStrategy 
 
     @Override
     protected final URI createUri(final String host, final String parameter) {
-        Validate.notBlank(host, "Host cannot be blank.");
-        Validate.notBlank(parameter, "Parameter cannot be blank.");
 
         // URI variables
         final Map<String, Object> uriVariables = new HashMap<>();
@@ -65,7 +61,6 @@ public class NexusIdentifyDescriptorStrategy extends AbstractDescriptorStrategy 
 
     @Override
     protected final Dependency extractDependency(final Response response) {
-        Objects.requireNonNull(response, "Response cannot be null.");
 
         // get entity from response
         final Answer entity = response.readEntity(Answer.class);
