@@ -14,5 +14,5 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: lfernandez.osiatis@gmail.com
     build_command_prepend: "mvn clean"
-    build_command:   "mvn -B -DskipTests=true compile"
+    build_command:   "mvn -fae -B -DskipTests=true compile"
     branch_pattern: master

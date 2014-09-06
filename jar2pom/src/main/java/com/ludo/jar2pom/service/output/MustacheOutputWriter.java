@@ -4,9 +4,11 @@ import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
 
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -29,18 +31,29 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import com.ludo.jar2pom.core.model.Descriptor;
 
+/**
+ * The Class MustacheOutputWriter.
+ */
 public class MustacheOutputWriter implements OutputWriter {
 
+    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(MustacheOutputWriter.class);
 
+    /** The Constant PERMS. */
     private static final Set<PosixFilePermission> PERMS = EnumSet.of(OWNER_READ, OWNER_WRITE, OWNER_EXECUTE);
 
+    /** The Constant OUTPUT_POM_PATTERN. */
     public static final String OUTPUT_POM_PATTERN = "pom_%1$tY-%<tm-%<td_%<tH-%<tM-%<tS.xml";
 
+    /** The Constant OUTPUT_POM_TEMPLATE. */
     public static final String OUTPUT_POM_TEMPLATE = "template.mustache";
 
+    /** The mustache. */
     private final Mustache mustache;
 
+    /**
+     * Instantiates a new mustache output writer.
+     */
     public MustacheOutputWriter() {
         super();
         // create and load template
@@ -48,6 +61,10 @@ public class MustacheOutputWriter implements OutputWriter {
         this.mustache = mustacheFactory.compile(OUTPUT_POM_TEMPLATE);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.ludo.jar2pom.service.output.OutputWriter#writeOutputFile(java.util.List, java.nio.file.Path)
+     */
     @Override
     public final void writeOutputFile(final List<Descriptor> descriptors, final Path file) throws IOException {
         Objects.requireNonNull(descriptors, "Descriptors cannot be null.");
@@ -64,7 +81,7 @@ public class MustacheOutputWriter implements OutputWriter {
         final Path outputPom = createOutputPath(file);
 
         // write file
-        try (Writer writer = new FileWriter(outputPom.toFile())) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(outputPom.toFile()); Writer writer = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);) {
             this.mustache.execute(writer, scopes);
         } catch (final IOException e) {
             LOG.debug("Writer error.", e);
@@ -72,6 +89,12 @@ public class MustacheOutputWriter implements OutputWriter {
         }
     }
 
+    /**
+     * Creates the output path.
+     *
+     * @param file the file
+     * @return the path
+     */
     public static final Path createOutputPath(final Path file) {
         Objects.requireNonNull(file, "Output file cannot be null.");
 
@@ -79,6 +102,12 @@ public class MustacheOutputWriter implements OutputWriter {
         return file.resolve(fileName);
     }
 
+    /**
+     * Creates the directory.
+     *
+     * @param file the file
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected final void createDirectory(final Path file) throws IOException {
         Objects.requireNonNull(file, "Output path cannot be null.");
         if (LOG.isDebugEnabled()) {

@@ -18,20 +18,36 @@ import com.ludo.jar2pom.core.remote.DescriptorStrategy;
 import com.ludo.jar2pom.model.Arguments;
 import com.ludo.jar2pom.service.output.OutputWriter;
 
+/**
+ * The Class JarConverter.
+ */
 public class JarConverter implements Converter {
 
+    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(JarConverter.class);
 
+    /** The descriptor strategy. */
     private final DescriptorStrategy descriptorStrategy;
 
+    /** The output writer. */
     private final OutputWriter outputWriter;
 
+    /**
+     * Instantiates a new jar converter.
+     *
+     * @param descriptorStrategy the descriptor strategy
+     * @param outputWriter the output writer
+     */
     public JarConverter(final DescriptorStrategy descriptorStrategy, final OutputWriter outputWriter) {
         super();
         this.descriptorStrategy = descriptorStrategy;
         this.outputWriter = outputWriter;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see com.ludo.jar2pom.service.converter.Converter#process(com.ludo.jar2pom.model.Arguments)
+     */
     @Override
     public final void process(final Arguments arguments) throws IOException {
         Objects.requireNonNull(arguments, "Arguments cannot be null.");
@@ -48,6 +64,15 @@ public class JarConverter implements Converter {
         this.outputWriter.writeOutputFile(descriptors, output);
     }
 
+    /**
+     * Gets the descriptors.
+     *
+     * @param input the input
+     * @param customHost the custom host
+     * @param recursive the recursive
+     * @return the descriptors
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     protected final List<Descriptor> getDescriptors(final Path input, final String customHost, final boolean recursive) throws IOException {
         Objects.requireNonNull(input, "Input path cannot be null.");
 
