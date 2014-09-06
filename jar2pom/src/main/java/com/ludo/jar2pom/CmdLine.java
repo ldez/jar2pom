@@ -111,6 +111,7 @@ public class CmdLine implements Arguments {
                 this.converter.process(this);
             }
         } catch (final CmdLineException | IOException e) {
+            LOG.trace("CmdLine error.", e);
             // if there's a problem in the command line, you'll get this exception. this will report an error message.
             this.printError(parser, e.getMessage());
         }
