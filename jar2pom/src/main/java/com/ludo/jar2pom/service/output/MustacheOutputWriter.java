@@ -74,7 +74,7 @@ public class MustacheOutputWriter implements OutputWriter {
         this.createDirectory(file);
 
         // create model
-        final Map<String, Object> scopes = new HashMap<String, Object>();
+        final Map<String, Object> scopes = new HashMap<>();
         scopes.put("descriptors", descriptors);
 
         // create output file path
