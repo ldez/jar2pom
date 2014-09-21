@@ -12,7 +12,10 @@
 	<url>https://github.com/ldez/jar2pom</url>
 
 	<scm>
-		<url>https://github.com/ldez/jar2pom.git</url>
+		<connection>scm:git:ssh://git@github.com:ldez/jar2pom.git</connection>
+		<url>scm:git:ssh://git@github.com:ldez/jar2pom.git</url>
+		<developerConnection>scm:git:ssh://git@github.com:ldez/jar2pom.git</developerConnection>
+		<tag>master</tag>
 	</scm>
 
 	<ciManagement>
@@ -28,6 +31,7 @@
 	<developers>
 		<developer>
 			<id>ldez</id>
+			<name>FERNANDEZ Ludovic</name>
 			<url>https://github.com/ldez</url>
 		</developer>
 	</developers>
@@ -656,7 +660,8 @@
 		<plugins>
 			<!-- ==== JXR ==== -->
 			<!-- The JXR Plugin produces a cross-reference of the project's sources. -->
-			<!-- The generated reports make it easier for the user to reference or find specific lines of code. It is also handy when used with the PMD Plugin for referencing errors found in the code. -->
+			<!-- The generated reports make it easier for the user to reference or find specific lines of code. It is also handy when used with the PMD Plugin for 
+				referencing errors found in the code. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
