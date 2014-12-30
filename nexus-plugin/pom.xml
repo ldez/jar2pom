@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ludo</groupId>
 		<artifactId>jar2pom-parent</artifactId>
-		<version>1.0.1-RELEASE</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>nexus-plugin</artifactId>
 
