@@ -27,23 +27,31 @@ Download version 1.0.1-RELEASE [here](https://dl.dropboxusercontent.com/u/360179
 
 In the directory where the pom.xml is, run:
 
-    mvn clean package
+```shell
+mvn clean package
+```
 
 
 ## Run like ##
 
-    java -jar jar2pom.jar
-    
+```shell
+java -jar jar2pom.jar
+```
+
 or
 
-    java -jar jar2pom.jar -host 192.168.0.1 -i "c:\myProjet\source" -o "c:\output" -p -r
+```shell
+java -jar jar2pom.jar -host 192.168.0.1 -i "c:\myProjet\source" -o "c:\output" -p -r
+```
 
 Show all options:
 
-    java -jar jar2pom.jar -h  
+```shell
+java -jar jar2pom.jar -h
+```
 
 Options (no options are mandatory):
-    
+
      -h (--help)  : display help.
      -host HOST   : defined custom Nexus host.
                     (ex: oss.sonatype.org)
@@ -79,14 +87,18 @@ Options (no options are mandatory):
 
 ### Maven Search ###
 
+April 22, 2015
+
 Nexus:
 
-- [oss.sonatype.org](https://oss.sonatype.org) : 2.9.0-04
-- [repository.sonatype.org](https://repository.sonatype.org) : 2.9.0-04
-- [maven.java.net](https://maven.java.net) : 2.8.1-01
-- [maven.atlassian.com](https://maven.atlassian.com) : 2.8.1-01
-- [nexus.codehaus.org](https://nexus.codehaus.org) : 2.8.1-01
-- [repository.apache.org](https://repository.apache.org) : 2.7.2-03
+| URL                                                        | version   |
+|------------------------------------------------------------|-----------|
+| [oss.sonatype.org](https://oss.sonatype.org)               | 2.11.2-06 |
+| [repository.sonatype.org](https://repository.sonatype.org) | 2.11.2-06 |
+| [maven.java.net](https://maven.java.net)                   | 2.11.2-06 |
+| [maven.atlassian.com](https://maven.atlassian.com)         | 2.11.2-06 |
+| [nexus.codehaus.org](https://nexus.codehaus.org)           | 2.11.2-06 |
+| [repository.apache.org](https://repository.apache.org)     | 2.11.1-01 |
 
 Search type:
 
