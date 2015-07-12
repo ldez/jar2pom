@@ -10,9 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,14 +35,11 @@ public class FileJarVisitorTest {
     @Test
     public void visit() throws Exception {
 
-        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
-            @Override
-            public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
-                final String sourceName = "foobar";
-                final Path file = FileJarVisitorTest.this.pathCaptor.getValue();
-                final Dependency dependency = new Dependency("artifactId");
-                return new Descriptor(sourceName, file, dependency);
-            }
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+            final String sourceName = "foobar";
+            final Path file = FileJarVisitorTest.this.pathCaptor.getValue();
+            final Dependency dependency = new Dependency("artifactId");
+            return new Descriptor(sourceName, file, dependency);
         });
 
         final Path start = this.temporaryFolder.getRoot().toPath();

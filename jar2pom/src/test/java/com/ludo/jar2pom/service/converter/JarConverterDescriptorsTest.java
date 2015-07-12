@@ -1,9 +1,14 @@
 package com.ludo.jar2pom.service.converter;
 
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
-import com.ludo.jar2pom.service.output.OutputWriter;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,18 +18,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import com.ludo.jar2pom.service.output.OutputWriter;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JarConverterDescriptorsTest {
@@ -46,23 +45,17 @@ public class JarConverterDescriptorsTest {
 
     @Before
     public void setup() throws IOException {
-        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
-            @Override
-            public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
-                final String sourceName = "foobar";
-                final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
-                final Dependency dependency = new Dependency("artifactId");
-                return new Descriptor(sourceName, file, dependency);
-            }
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+            final String sourceName = "foobar";
+            final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
+            final Dependency dependency = new Dependency("artifactId");
+            return new Descriptor(sourceName, file, dependency);
         });
-        when(this.descriptorStrategy.search(this.pathCaptor.capture())).then(new Answer<Descriptor>() {
-            @Override
-            public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
-                final String sourceName = "foobar";
-                final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
-                final Dependency dependency = new Dependency("artifactId");
-                return new Descriptor(sourceName, file, dependency);
-            }
+        when(this.descriptorStrategy.search(this.pathCaptor.capture())).then(invocation -> {
+            final String sourceName = "foobar";
+            final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
+            final Dependency dependency = new Dependency("artifactId");
+            return new Descriptor(sourceName, file, dependency);
         });
     }
 

@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ludo</groupId>
 		<artifactId>jar2pom-parent</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>jar2pom</artifactId>
 	<description>Convert Jars to POM</description>

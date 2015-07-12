@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ludo</groupId>
     <artifactId>jar2pom-parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jar to POM</name>
@@ -50,10 +50,10 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <javac.encoding>UTF-8</javac.encoding>
-        <javac.source.version>1.7</javac.source.version>
-        <javac.target.version>1.7</javac.target.version>
+        <javac.source.version>1.8</javac.source.version>
+        <javac.target.version>1.8</javac.target.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
-        <prerequisites.maven.version>3.0.1</prerequisites.maven.version>
+        <prerequisites.maven.version>3.2.0</prerequisites.maven.version>
 
         <!-- ========= Dependencies version ========= -->
 
@@ -62,8 +62,7 @@
 
         <jackson.version>2.7.1</jackson.version>
 
-        <!-- <mustache.version>0.9.0</mustache.version> --><!-- Java 8 only -->
-        <mustache.version>0.8.17</mustache.version>
+        <mustache.version>0.9.0</mustache.version>
 
         <args4j.version>2.33</args4j.version>
 

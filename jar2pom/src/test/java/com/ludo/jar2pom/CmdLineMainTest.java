@@ -40,12 +40,7 @@ public class CmdLineMainTest {
 
         CmdLine.main(args);
 
-        final FileFilter filter = new FileFilter() {
-            @Override
-            public boolean accept(final File path) {
-                return POM_MATCHER.matches(path.toPath());
-            }
-        };
+        final FileFilter filter = path -> POM_MATCHER.matches(path.toPath());
 
         final File[] list = output.listFiles(filter);
         assertNotNull(list);
