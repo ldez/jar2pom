@@ -30,16 +30,16 @@ public class CmdLine implements Arguments {
     private static final Logger LOG = LoggerFactory.getLogger(CmdLine.class);
 
     @Option(name = "-i", usage = "input path (file or directory).", metaVar = "INPUT", required = false, handler = PathOptionHandler.class)
-    private final Path input = Paths.get(".");
+    private Path input = Paths.get(".");
 
     @Option(name = "-r", usage = "inspect input path recursively.")
     private boolean recursive;
 
     @Option(name = "-o", usage = "directory output path.\n(default output is console)", metaVar = "OUTPUT", required = false, handler = PathOptionHandler.class)
-    private final Path output = Paths.get(".");
+    private Path output = Paths.get(".");
 
     @Option(name = "-host", usage = "defined custom Nexus host.\n(ex: oss.sonatype.org)", metaVar = "HOST", required = false)
-    private final String customHost = null;
+    private String customHost = null;
 
     @Option(name = "-p", aliases = { "--proxy" }, usage = "Use system proxies.", required = false)
     private boolean systemProxy;

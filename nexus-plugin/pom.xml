@@ -1,131 +1,133 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.ludo</groupId>
-		<artifactId>jar2pom-parent</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
-	</parent>
-	<artifactId>nexus-plugin</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ludo</groupId>
+        <artifactId>jar2pom-parent</artifactId>
+        <version>1.0.2-RELEASE</version>
+    </parent>
+    <artifactId>nexus-plugin</artifactId>
 
-	<dependencies>
+    <dependencies>
 
-		<!-- ==== Modules ==== -->
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>jar2pom-core</artifactId>
-		</dependency>
+        <!-- ==== Modules ==== -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jar2pom-core</artifactId>
+        </dependency>
 
-		<!-- ==== Jackson ==== -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-		</dependency>
+        <!-- ==== Jackson ==== -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
 
-		<!-- ===== Apache Commons ===== -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
+        <!-- ===== Apache Commons ===== -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
-		<!-- ==== Guava ==== -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
+        <!-- ==== Guava ==== -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
 
-		<!-- ==== Logback ==== -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <!-- ==== Logback ==== -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- ===== jUnit ===== -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<type>jar</type>
-		</dependency>
+        <!-- ===== jUnit ===== -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <type>jar</type>
+        </dependency>
 
-		<!-- ==== Hamcrest ==== -->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-		</dependency>
+        <!-- ==== Hamcrest ==== -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+        </dependency>
 
-		<!-- ==== Mockito ==== -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.objenesis</groupId>
-			<artifactId>objenesis</artifactId>
-		</dependency>
+        <!-- ==== Mockito ==== -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.objenesis</groupId>
+            <artifactId>objenesis</artifactId>
+        </dependency>
 
-		<!-- ==== openpojo ==== -->
-		<dependency>
-			<groupId>com.googlecode.openpojo</groupId>
-			<artifactId>openpojo</artifactId>
-		</dependency>
+        <!-- ==== openpojo ==== -->
+        <dependency>
+            <groupId>com.googlecode.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+        </dependency>
 
-		<!-- ==== xmlunit ==== -->
-		<dependency>
-			<groupId>xmlunit</groupId>
-			<artifactId>xmlunit</artifactId>
-		</dependency>
+        <!-- ==== xmlunit ==== -->
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<!-- ==== JAXB generator ==== -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
+    <build>
+        <plugins>
+            <!-- ==== JAXB generator ==== -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
 
-				<configuration>
-					<!-- <verbose>true</verbose> -->
-					<clearOutputDir>false</clearOutputDir>
-				</configuration>
+                <configuration>
+                    <!-- <verbose>true</verbose> -->
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
 
-				<executions>
-					<execution>
-						<id>nexus-indexer-lucene-xsd-xjc</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-						<configuration>
-							<schemaFiles>ns0.xsd</schemaFiles>
-							<schemaDirectory>${basedir}/src/main/resources/</schemaDirectory>
-							<bindingFiles>nexus-indexer-lucene-bindings.xjb</bindingFiles>
-							<bindingDirectory>${basedir}/src/main/resources/</bindingDirectory>
-							<packageName>org.sonatype.nexus.rest.model</packageName>
-							<staleFile>${project.build.directory}/jaxb2/nexus-indexer-lucene.jaxb-staleFlag</staleFile>
-						</configuration>
-					</execution>
-					<execution>
-						<id>nexus-indexer-lucene-custom-xsd-xjc</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-						<configuration>
-							<schemaFiles>ns0-custom.xsd</schemaFiles>
-							<schemaDirectory>${basedir}/src/main/resources/</schemaDirectory>
-							<bindingFiles>nexus-indexer-lucene-bindings.xjb</bindingFiles>
-							<bindingDirectory>${basedir}/src/main/resources/</bindingDirectory>
-							<packageName>org.sonatype.nexus.rest.custom</packageName>
-							<staleFile>${project.build.directory}/jaxb2/nexus-indexer-lucene-custom.jaxb-staleFlag</staleFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+                <executions>
+                    <execution>
+                        <id>nexus-indexer-lucene-xsd-xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/resources/ns0.xsd</source>
+                            </sources>
+                            <xjbSources>
+                                <xjbSource>${basedir}/src/main/resources/nexus-indexer-lucene-bindings.xjb</xjbSource>
+                            </xjbSources>
+                            <packageName>org.sonatype.nexus.rest.model</packageName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>nexus-indexer-lucene-custom-xsd-xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/resources/ns0-custom.xsd</source>
+                            </sources>
+                            <xjbSources>
+                                <xjbSource>${basedir}/src/main/resources/nexus-indexer-lucene-bindings.xjb</xjbSource>
+                            </xjbSources>
+                            <packageName>org.sonatype.nexus.rest.custom</packageName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
 </project>
