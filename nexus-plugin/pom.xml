@@ -90,7 +90,7 @@
 
                 <configuration>
                     <!-- <verbose>true</verbose> -->
-                    <!-- <clearOutputDir>false</clearOutputDir> -->
+                    <clearOutputDir>false</clearOutputDir>
                 </configuration>
 
                 <executions>
