@@ -4,19 +4,17 @@ jdk:
 - oraclejdk7
 - oraclejdk8
 
-#env:
-#  global:
-#   - secure: "VKvDvS5RpATVGtLwgkKGaSNcAwo3tDlCkVCmXcbHvPAtngxqyWA2vl34mTOq4BxGRKYjSe9IZuY92aV88h1vpreGT/uzvvuRomb4ynOU0iubGixXT2/2MMbc36xnvuVEpMuG/WMsz5raVY8D77BuGb/XNcWKi1r9+cCzfp2d44Q="
+script: mvn clean test -B
+env:
+  global:
+   - secure: "VKvDvS5RpATVGtLwgkKGaSNcAwo3tDlCkVCmXcbHvPAtngxqyWA2vl34mTOq4BxGRKYjSe9IZuY92aV88h1vpreGT/uzvvuRomb4ynOU0iubGixXT2/2MMbc36xnvuVEpMuG/WMsz5raVY8D77BuGb/XNcWKi1r9+cCzfp2d44Q="
 
-#addons:
-#  coverity_scan:
-#    project:
-#      name: "ldez/jar2pom"
-#      description: "Build submitted via Travis CI"
-#    notification_email: lfernandez.osiatis@gmail.com
-#    build_command_prepend: "mvn clean"
-#    build_command:   "mvn -fae -B -DskipTests=true compile"
-#    branch_pattern: master
-
-#[![Coverity Scan Build Status](https://scan.coverity.com/projects/2805/badge.svg)](https://scan.coverity.com/projects/2805)
-#[![Coverage Status](https://coveralls.io/repos/ldez/jar2pom/badge.png)](https://coveralls.io/r/ldez/jar2pom)
+addons:
+  coverity_scan:
+    project:
+      name: "ldez/jar2pom"
+      description: "Build submitted via Travis CI"
+    notification_email: lfernandez.osiatis@gmail.com
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -fae -B -DskipTests=true compile"
+    branch_pattern: master
