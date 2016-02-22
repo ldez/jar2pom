@@ -7,7 +7,11 @@ import com.openpojo.reflection.impl.PojoClassFactory;
 import com.openpojo.validation.Validator;
 import com.openpojo.validation.ValidatorBuilder;
 import com.openpojo.validation.affirm.Affirm;
-import com.openpojo.validation.rule.impl.*;
+import com.openpojo.validation.rule.impl.GetterMustExistRule;
+import com.openpojo.validation.rule.impl.NoPublicFieldsRule;
+import com.openpojo.validation.rule.impl.NoStaticExceptFinalRule;
+import com.openpojo.validation.rule.impl.SerializableMustHaveSerialVersionUIDRule;
+import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.DefaultValuesNullTester;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
@@ -43,7 +47,6 @@ public class SimplePojoTest {
                 .with(new SetterTester())
                 .with(new GetterTester())
                 .build();
-
     }
 
     @Test

@@ -13,8 +13,12 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
-import java.io.*;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -64,8 +68,8 @@ public class MarshallingCustomTest {
 
         final URL url = this.getClass().getClassLoader().getResource(XML_RESULT);
 
-        final Reader expectedReader = Files.newBufferedReader(Paths.get(url.toURI()));
-        final Reader actualReader = Files.newBufferedReader(outputFile);
+        final Reader expectedReader = Files.newBufferedReader(Paths.get(url.toURI()), StandardCharsets.UTF_8);
+        final Reader actualReader = Files.newBufferedReader(outputFile, StandardCharsets.UTF_8);
 
         assertXMLEqual(expectedReader, actualReader);
     }

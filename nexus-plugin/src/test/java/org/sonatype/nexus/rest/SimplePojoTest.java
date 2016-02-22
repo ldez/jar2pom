@@ -1,14 +1,9 @@
 package org.sonatype.nexus.rest;
 
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.sonatype.nexus.rest.custom.ObjectFactory;
-
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.impl.PojoClassFactory;
-import com.openpojo.validation.PojoValidator;
+import com.openpojo.validation.Validator;
+import com.openpojo.validation.ValidatorBuilder;
 import com.openpojo.validation.affirm.Affirm;
 import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.NoPublicFieldsRule;
@@ -18,6 +13,11 @@ import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.test.impl.DefaultValuesNullTester;
 import com.openpojo.validation.test.impl.GetterTester;
 import com.openpojo.validation.test.impl.SetterTester;
+import org.junit.Before;
+import org.junit.Test;
+import org.sonatype.nexus.rest.custom.ObjectFactory;
+
+import java.util.List;
 
 public class SimplePojoTest {
 
@@ -25,7 +25,7 @@ public class SimplePojoTest {
 
     private List<PojoClass> pojoClasses;
 
-    private PojoValidator pojoValidator;
+    private Validator pojoValidator;
 
     @Before
     public void setup() {
@@ -33,19 +33,18 @@ public class SimplePojoTest {
         final String packageName = ObjectFactory.class.getPackage().getName();
         this.pojoClasses = PojoClassFactory.getPojoClasses(packageName);
 
-        this.pojoValidator = new PojoValidator();
-
-        // Create Rules to validate structure for POJO_PACKAGE
-        this.pojoValidator.addRule(new NoPublicFieldsRule());
-        this.pojoValidator.addRule(new NoStaticExceptFinalRule());
-        this.pojoValidator.addRule(new GetterMustExistRule());
-        this.pojoValidator.addRule(new SetterMustExistRule());
-        this.pojoValidator.addRule(new SerializableMustHaveSerialVersionUIDRule());
-
-        // Create Testers to validate behaviour for POJO_PACKAGE
-        this.pojoValidator.addTester(new DefaultValuesNullTester());
-        this.pojoValidator.addTester(new SetterTester());
-        this.pojoValidator.addTester(new GetterTester());
+        this.pojoValidator = ValidatorBuilder.create()
+                // Create Rules to validate structure for POJO_PACKAGE
+                .with(new NoPublicFieldsRule())
+                .with(new NoStaticExceptFinalRule())
+                .with(new GetterMustExistRule())
+                .with(new SetterMustExistRule())
+                .with(new SerializableMustHaveSerialVersionUIDRule())
+                // Create Testers to validate behaviour for POJO_PACKAGE
+                .with(new DefaultValuesNullTester())
+                .with(new SetterTester())
+                .with(new GetterTester())
+                .build();
     }
 
     @Test
@@ -56,7 +55,7 @@ public class SimplePojoTest {
     @Test
     public void testPojoStructureAndBehavior() {
         for (final PojoClass pojoClass : this.pojoClasses) {
-            this.pojoValidator.runValidation(pojoClass);
+            this.pojoValidator.validate(pojoClass);
         }
     }
 
