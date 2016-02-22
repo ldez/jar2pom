@@ -1,12 +1,15 @@
 package org.maven.search.rest.remote;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * The Class DefaultHost.
  */
 public final class DefaultHost {
+
+    /** The Constant HOSTS. */
+    public static final List<String> HOSTS = Collections.singletonList("search.maven.org");
 
     /**
      * Instantiates a new default host.
@@ -16,8 +19,5 @@ public final class DefaultHost {
     private DefaultHost() throws InstantiationException {
         throw new InstantiationException();
     }
-
-    /** The Constant HOSTS. */
-    public static final List<String> HOSTS = Arrays.asList("search.maven.org");
 
 }

@@ -1,14 +1,13 @@
 package org.maven.search.rest.support;
 
-import java.util.List;
-
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.ludo.jar2pom.core.model.Dependency;
 import org.apache.commons.collections4.CollectionUtils;
 import org.maven.search.rest.model.Answer;
 import org.maven.search.rest.model.Docs;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.ludo.jar2pom.core.model.Dependency;
+import java.util.List;
 
 public class CentralAnswerTransformer implements Function<Answer, List<Dependency>> {
 

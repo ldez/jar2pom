@@ -1,27 +1,21 @@
 package com.ludo.jar2pom;
 
+import com.ludo.jar2pom.model.Arguments;
+import com.ludo.jar2pom.service.converter.Converter;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.io.IOException;
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import java.io.IOException;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import com.ludo.jar2pom.model.Arguments;
-import com.ludo.jar2pom.service.converter.Converter;
-
 @RunWith(MockitoJUnitRunner.class)
 public class CmdLineTest {
-
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Mock
     private Converter converter;

@@ -1,20 +1,5 @@
 package com.ludo.jar2pom;
 
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
-import org.kohsuke.args4j.OptionHandlerFilter;
-import org.kohsuke.args4j.ParserProperties;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.sonatype.nexus.remote.NexusIdentifyDescriptorStrategy;
-
 import com.ludo.jar2pom.core.remote.CompositeDescriptorStrategy;
 import com.ludo.jar2pom.core.remote.DescriptorStrategy;
 import com.ludo.jar2pom.model.Arguments;
@@ -23,6 +8,16 @@ import com.ludo.jar2pom.service.converter.JarConverter;
 import com.ludo.jar2pom.service.output.MustacheOutputWriter;
 import com.ludo.jar2pom.service.output.OutputWriter;
 import com.ludo.jar2pom.support.PathOptionHandler;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.kohsuke.args4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.sonatype.nexus.remote.NexusIdentifyDescriptorStrategy;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class CmdLine implements Arguments {
     // TODO : ldez - 9 août 2014 : ajouter l'option du type de recherche : checksum/checksum&artifactId
@@ -98,7 +93,7 @@ public class CmdLine implements Arguments {
             parser.parseArgument(args);
 
             if (this.isHelp()) {
-                this.printHelp(parser, System.out);
+                printHelp(parser, System.out);
             } else {
                 LOG.debug("Input: {}", this.input);
 
@@ -113,17 +108,17 @@ public class CmdLine implements Arguments {
         } catch (final CmdLineException | IOException e) {
             LOG.trace("CmdLine error.", e);
             // if there's a problem in the command line, you'll get this exception. this will report an error message.
-            this.printError(parser, e.getMessage());
+            printError(parser, e.getMessage());
         }
     }
 
-    private void printError(final CmdLineParser parser, final String msg) {
+    private static void printError(final CmdLineParser parser, final String msg) {
         System.err.println(msg);
         System.err.println();
-        this.printHelp(parser, System.err);
+        printHelp(parser, System.err);
     }
 
-    private void printHelp(final CmdLineParser parser, final PrintStream printStream) {
+    private static void printHelp(final CmdLineParser parser, final PrintStream printStream) {
         // print help header
         printStream.println("java -jar jar2pom.jar [options...]");
         // print the list of available options

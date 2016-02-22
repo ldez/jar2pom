@@ -1,8 +1,11 @@
 package com.ludo.jar2pom.service.output;
 
-import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
+import com.ludo.jar2pom.core.model.Descriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,21 +18,11 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.github.mustachejava.DefaultMustacheFactory;
-import com.github.mustachejava.Mustache;
-import com.github.mustachejava.MustacheFactory;
-import com.ludo.jar2pom.core.model.Descriptor;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
 
 /**
  * The Class MustacheOutputWriter.
@@ -81,7 +74,7 @@ public class MustacheOutputWriter implements OutputWriter {
         final Path outputPom = createOutputPath(file);
 
         // write file
-        try (FileOutputStream fileOutputStream = new FileOutputStream(outputPom.toFile()); Writer writer = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(outputPom.toFile()); Writer writer = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8)) {
             this.mustache.execute(writer, scopes);
         } catch (final IOException e) {
             LOG.debug("Writer error.", e);
@@ -95,7 +88,7 @@ public class MustacheOutputWriter implements OutputWriter {
      * @param file the file
      * @return the path
      */
-    public static final Path createOutputPath(final Path file) {
+    public static Path createOutputPath(final Path file) {
         Objects.requireNonNull(file, "Output file cannot be null.");
 
         final String fileName = String.format(OUTPUT_POM_PATTERN, new Date());
