@@ -1,14 +1,9 @@
 package com.ludo.jar2pom.service.converter;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
-
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import com.ludo.jar2pom.service.output.OutputWriter;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,11 +17,14 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
-import com.ludo.jar2pom.service.converter.JarConverter;
-import com.ludo.jar2pom.service.output.OutputWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JarConverterDescriptorsTest {
@@ -44,7 +42,7 @@ public class JarConverterDescriptorsTest {
     private JarConverter converter;
 
     @Captor
-    ArgumentCaptor<Path> pathCaptor;
+    private ArgumentCaptor<Path> pathCaptor;
 
     @Before
     public void setup() throws IOException {

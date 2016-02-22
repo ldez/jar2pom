@@ -1,12 +1,7 @@
 package com.ludo.jar2pom.core.remote;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
-
-import java.nio.file.Path;
-
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -18,8 +13,12 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
+import java.nio.file.Path;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CompositeDescriptorStrategyTest {
@@ -28,13 +27,13 @@ public class CompositeDescriptorStrategyTest {
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Mock
-    DescriptorStrategy descriptorStrategy01;
+    private DescriptorStrategy descriptorStrategy01;
 
     @Mock
-    DescriptorStrategy descriptorStrategy02;
+    private DescriptorStrategy descriptorStrategy02;
 
     @Captor
-    ArgumentCaptor<Path> pathCaptor;
+    private ArgumentCaptor<Path> pathCaptor;
 
     @Test
     public void twoStrategiesFail() throws Exception {

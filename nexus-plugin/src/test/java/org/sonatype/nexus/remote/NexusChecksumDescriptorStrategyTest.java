@@ -1,15 +1,8 @@
 package org.sonatype.nexus.remote;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
-
-import java.net.URI;
-import java.nio.file.Path;
-
-import javax.ws.rs.core.Response;
-
+import com.google.common.base.Function;
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -21,9 +14,14 @@ import org.sonatype.nexus.rest.custom.SearchNGResponse;
 import org.sonatype.nexus.support.NexusNGArtifactTransformer;
 import org.sonatype.nexus.support.SearchNGResponseTransformer;
 
-import com.google.common.base.Function;
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
+import javax.ws.rs.core.Response;
+import java.net.URI;
+import java.nio.file.Path;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NexusChecksumDescriptorStrategyTest {
@@ -32,7 +30,7 @@ public class NexusChecksumDescriptorStrategyTest {
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Mock
-    Response response;
+    private Response response;
 
     private final Function<NexusNGArtifact, Dependency> nexusNGArtifactTransformer = new NexusNGArtifactTransformer();
     private final SearchNGResponseTransformer searchNGResponseTransformer = new SearchNGResponseTransformer(this.nexusNGArtifactTransformer);

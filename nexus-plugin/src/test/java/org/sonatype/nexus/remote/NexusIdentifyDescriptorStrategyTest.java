@@ -1,14 +1,6 @@
 package org.sonatype.nexus.remote;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
-
-import java.net.URI;
-import java.nio.file.Path;
-
-import javax.ws.rs.core.Response;
-
+import com.ludo.jar2pom.core.model.Dependency;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -17,7 +9,13 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.sonatype.nexus.json.Answer;
 
-import com.ludo.jar2pom.core.model.Dependency;
+import javax.ws.rs.core.Response;
+import java.net.URI;
+import java.nio.file.Path;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NexusIdentifyDescriptorStrategyTest {
@@ -25,7 +23,7 @@ public class NexusIdentifyDescriptorStrategyTest {
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    NexusIdentifyDescriptorStrategy descriptorStrategy = new NexusIdentifyDescriptorStrategy();
+    private final NexusIdentifyDescriptorStrategy descriptorStrategy = new NexusIdentifyDescriptorStrategy();
 
     @Mock
     Response response;

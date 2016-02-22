@@ -1,22 +1,6 @@
 package org.sonatype.nexus.rest;
 
-import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.List;
-
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.stream.StreamSource;
-
+import com.ludo.jaxb.support.JaxbHelper;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -25,7 +9,21 @@ import org.sonatype.nexus.rest.custom.ObjectFactory;
 import org.sonatype.nexus.rest.custom.SearchNGResponse;
 import org.sonatype.nexus.rest.custom.SearchNGResponse.Data;
 
-import com.ludo.jaxb.support.JaxbHelper;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 public class MarshallingCustomTest {
 
@@ -42,9 +40,9 @@ public class MarshallingCustomTest {
     @Test
     public void marshal() throws Exception {
         final File tempFolder = this.temporaryFolder.getRoot();
-        final File outputFile = new File(tempFolder, "marshalresult.xml");
-        final FileOutputStream os = new FileOutputStream(outputFile);
-        // final FileOutputStream os = new FileOutputStream("c:/marshalresult01.xml");
+        final Path outputFile = tempFolder.toPath().resolve("marshalresult.xml");
+        final OutputStream os = Files.newOutputStream(outputFile);
+        // final OutputStream os = new FileOutputStream("c:/marshalresult01.xml");
 
         final SearchNGResponse response = new SearchNGResponse();
 
@@ -65,8 +63,9 @@ public class MarshallingCustomTest {
         marshaller.marshal(root, os);
 
         final URL url = this.getClass().getClassLoader().getResource(XML_RESULT);
-        final FileReader expectedReader = new FileReader(new File(url.toURI()));
-        final FileReader actualReader = new FileReader(outputFile);
+
+        final Reader expectedReader = Files.newBufferedReader(Paths.get(url.toURI()));
+        final Reader actualReader = Files.newBufferedReader(outputFile);
 
         assertXMLEqual(expectedReader, actualReader);
     }

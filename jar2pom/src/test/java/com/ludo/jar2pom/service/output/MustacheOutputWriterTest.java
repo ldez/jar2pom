@@ -1,6 +1,9 @@
 package com.ludo.jar2pom.service.output;
 
-import static org.junit.Assert.assertTrue;
+import com.ludo.jar2pom.core.model.Descriptor;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,18 +12,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-
-import com.ludo.jar2pom.core.model.Descriptor;
+import static org.junit.Assert.assertTrue;
 
 public class MustacheOutputWriterTest {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    MustacheOutputWriter outputWriter = new MustacheOutputWriter();
+    private final MustacheOutputWriter outputWriter = new MustacheOutputWriter();
 
     @Test(expected = IOException.class)
     public void createDirectoryFailExistFile() throws Exception {

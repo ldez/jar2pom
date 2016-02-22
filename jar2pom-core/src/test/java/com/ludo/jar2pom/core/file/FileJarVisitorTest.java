@@ -1,13 +1,8 @@
 package com.ludo.jar2pom.core.file;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -19,9 +14,13 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FileJarVisitorTest {
@@ -30,10 +29,10 @@ public class FileJarVisitorTest {
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Mock
-    DescriptorStrategy descriptorStrategy;
+    private DescriptorStrategy descriptorStrategy;
 
     @Captor
-    ArgumentCaptor<Path> pathCaptor;
+    private ArgumentCaptor<Path> pathCaptor;
 
     @Test
     public void visit() throws Exception {

@@ -1,15 +1,15 @@
 package org.maven.search.rest.remote;
 
-import static org.junit.Assert.assertEquals;
-
-import java.net.URI;
-import java.nio.file.Path;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.net.URI;
+import java.nio.file.Path;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CentralChecksumDescriptorStrategyTest {
@@ -17,7 +17,7 @@ public class CentralChecksumDescriptorStrategyTest {
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    CentralChecksumDescriptorStrategy descriptorStrategy = new CentralChecksumDescriptorStrategy();
+    private final CentralChecksumDescriptorStrategy descriptorStrategy = new CentralChecksumDescriptorStrategy();
 
     @Test
     public void createUriSuccess() throws Exception {
