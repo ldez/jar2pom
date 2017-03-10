@@ -97,6 +97,7 @@
                 <executions>
                     <execution>
                         <id>nexus-indexer-lucene-xsd-xjc</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>xjc</goal>
                         </goals>
@@ -112,6 +113,7 @@
                     </execution>
                     <execution>
                         <id>nexus-indexer-lucene-custom-xsd-xjc</id>
+                        <phase>validate</phase>
                         <goals>
                             <goal>xjc</goal>
                         </goals>

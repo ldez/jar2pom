@@ -10,14 +10,14 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,7 +35,7 @@ public class FileJarVisitorTest {
     @Test
     public void visit() throws Exception {
 
-        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "foobar";
             final Path file = FileJarVisitorTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");

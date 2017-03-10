@@ -9,13 +9,13 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,13 +35,7 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesFail() throws Exception {
-        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
-            final String sourceName = "descriptorStrategy01";
-            final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
-            final Dependency dependency = new Dependency("artifactId");
-            return new Descriptor(sourceName, file, dependency, false);
-        });
-        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy02";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");
@@ -60,13 +54,13 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesSecondFound() throws Exception {
-        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy01";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");
             return new Descriptor(sourceName, file, dependency, false);
         });
-        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy02";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");
@@ -85,17 +79,11 @@ public class CompositeDescriptorStrategyTest {
 
     @Test
     public void twoStrategiesFirstFound() throws Exception {
-        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy01.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy01";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");
             return new Descriptor(sourceName, file, dependency, true);
-        });
-        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
-            final String sourceName = "descriptorStrategy02";
-            final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
-            final Dependency dependency = new Dependency("artifactId");
-            return new Descriptor(sourceName, file, dependency, false);
         });
 
         final CompositeDescriptorStrategy compositeDescriptorStrategy = new CompositeDescriptorStrategy(this.descriptorStrategy01);

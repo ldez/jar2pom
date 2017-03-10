@@ -13,7 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -21,7 +21,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -44,7 +44,7 @@ public class JarConverterDescriptorsTest {
 
     @Before
     public void setup() throws IOException {
-        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(invocation -> {
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "foobar";
             final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
             final Dependency dependency = new Dependency("artifactId");
