@@ -26,7 +26,6 @@ public class CompositeDescriptorStrategy implements DescriptorStrategy {
      * @param descriptorStrategy the descriptor strategy
      */
     public CompositeDescriptorStrategy(final DescriptorStrategy descriptorStrategy) {
-        super();
         Objects.requireNonNull(descriptorStrategy, "DescriptorStrategy cannot be null.");
         this.descriptorStrategies.add(descriptorStrategy);
     }

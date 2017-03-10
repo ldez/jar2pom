@@ -42,7 +42,7 @@ public class SimplePojoTest {
                 .with(new GetterMustExistRule())
                 .with(new SetterMustExistRule())
                 .with(new SerializableMustHaveSerialVersionUIDRule())
-                        // Create Testers to validate behaviour for POJO_PACKAGE
+                // Create Testers to validate behaviour for POJO_PACKAGE
                 .with(new DefaultValuesNullTester())
                 .with(new SetterTester())
                 .with(new GetterTester())

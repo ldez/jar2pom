@@ -64,7 +64,6 @@ public class MustacheOutputWriter implements OutputWriter {
      * Instantiates a new mustache output writer.
      */
     public MustacheOutputWriter() {
-        super();
         // create and load template
         final MustacheFactory mustacheFactory = new DefaultMustacheFactory();
         this.mustache = mustacheFactory.compile(OUTPUT_POM_TEMPLATE);

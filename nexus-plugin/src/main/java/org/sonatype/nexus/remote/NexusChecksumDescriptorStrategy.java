@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class NexusChecksumDescriptorStrategy extends AbstractDescriptorStrategy {
 
@@ -59,16 +60,12 @@ public class NexusChecksumDescriptorStrategy extends AbstractDescriptorStrategy 
     @Override
     protected final Dependency extractDependency(final Response response) {
 
-        final SearchNGResponse entity = response.readEntity(SearchNGResponse.class);
-        final List<Dependency> dependencies = this.searchNGResponseTransformer.apply(entity);
-
-        // FIXME : ldez - 18 août 2014 : if several artifacts ?
-        Dependency dependency = null;
-        if (CollectionUtils.isNotEmpty(dependencies)) {
-            dependency = dependencies.get(0);
-        }
-
-        return dependency;
+        return Optional.ofNullable(response.readEntity(SearchNGResponse.class))
+                .map(this.searchNGResponseTransformer::apply)
+                .filter(CollectionUtils::isNotEmpty)
+                        // FIXME : ldez - 18 août 2014 : if several artifacts ?
+                .map(dependencies -> dependencies.get(0))
+                .orElse(null);
     }
 
 }

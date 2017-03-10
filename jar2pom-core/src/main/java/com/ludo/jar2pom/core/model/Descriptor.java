@@ -39,7 +39,6 @@ public class Descriptor {
      * @param dependency the dependency
      */
     public Descriptor(final String sourceName, final Path file, final Dependency dependency) {
-        super();
         this.sourceName = sourceName;
 
         Objects.requireNonNull(file, "File cannot be null.");

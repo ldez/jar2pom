@@ -30,7 +30,6 @@ public class FileJarVisitor extends SimpleFileVisitor<Path> {
     private String customHost = null;
 
     public FileJarVisitor(final DescriptorStrategy descriptorStrategy, final String customHost) {
-        super();
         Objects.requireNonNull(descriptorStrategy, "Descriptor strategy cannot be null.");
         this.descriptorStrategy = descriptorStrategy;
         this.customHost = customHost;

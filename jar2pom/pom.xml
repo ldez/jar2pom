@@ -91,6 +91,12 @@
             <artifactId>janino</artifactId>
         </dependency>
 
+        <!-- ==== AssertJ ==== -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+
         <!-- ==== jUnit ==== -->
         <dependency>
             <groupId>junit</groupId>

@@ -11,7 +11,14 @@ public final class DefaultHost {
     /**
      * The Constant HOSTS.
      */
-    public static final List<String> HOSTS = Arrays.asList("oss.sonatype.org", "repository.sonatype.org", "maven.java.net", "maven.atlassian.com", "nexus.codehaus.org", "repository.apache.org");
+    public static final List<String> HOSTS = Arrays.asList(
+            "oss.sonatype.org",
+            "repository.sonatype.org",
+            "maven.java.net",
+            "maven.atlassian.com",
+            "nexus.codehaus.org",
+            "repository.apache.org"
+    );
 
     /**
      * Instantiates a new default host.

@@ -15,8 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +32,7 @@ public class FileJarVisitorTest {
     private ArgumentCaptor<Path> pathCaptor;
 
     @Test
-    public void visit() throws Exception {
+    public void should_exclude_non_jar_file_when_directory_contains_several_extensions() throws Exception {
 
         when(this.descriptorStrategy.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "foobar";
@@ -52,7 +51,7 @@ public class FileJarVisitorTest {
 
         Files.walkFileTree(start, fileJarVisitor);
 
-        assertThat(fileJarVisitor.getDescriptors(), hasSize(1));
+        assertThat(fileJarVisitor.getDescriptors()).hasSize(1);
     }
 
 }

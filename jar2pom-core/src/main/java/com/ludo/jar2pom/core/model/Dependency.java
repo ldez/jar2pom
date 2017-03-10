@@ -79,7 +79,6 @@ public class Dependency {
      * @param artifactId the artifact id
      */
     public Dependency(final String artifactId) {
-        super();
         Validate.notBlank(artifactId, "Artifact id cannot be blank.");
         this.artifactId = artifactId;
     }

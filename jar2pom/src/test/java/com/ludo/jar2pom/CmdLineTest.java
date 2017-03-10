@@ -21,7 +21,7 @@ public class CmdLineTest {
     private Converter converter;
 
     @Test
-    public void processHelp() throws Exception {
+    public void should_no_call_converter_when_add_argument_h() throws Exception {
         final CmdLine cmdLine = new CmdLine(this.converter);
 
         final String[] args = new String[]{"-h"};
@@ -31,7 +31,7 @@ public class CmdLineTest {
     }
 
     @Test
-    public void processWithIOException() throws Exception {
+    public void should_call_converter_when_IOException() throws Exception {
         final CmdLine cmdLine = new CmdLine(this.converter);
 
         doThrow(IOException.class).when(this.converter).process(any(Arguments.class));
@@ -43,7 +43,7 @@ public class CmdLineTest {
     }
 
     @Test
-    public void processWithProxy() throws Exception {
+    public void should_call_converter_when_add_the_proxy_argument() throws Exception {
         final CmdLine cmdLine = new CmdLine(this.converter);
 
         final String[] args = new String[]{"-p"};

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
 
@@ -34,7 +35,6 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
     private MediaType mediaType;
 
     public AbstractDescriptorStrategy(final MediaType mediaType, final Collection<String> predefinedHosts) {
-        super();
         Objects.requireNonNull(predefinedHosts, "Predefined hosts cannot be null.");
         this.predefinedHosts.addAll(predefinedHosts);
 
@@ -85,12 +85,12 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
             Objects.requireNonNull(response, "Response cannot be null.");
 
             // Response
-            if (response.getStatus() == 200) {
-                final Dependency dependency = this.extractDependency(response);
-                if (dependency != null) {
-                    descriptor = new Descriptor(host, file, dependency);
-                }
-            }
+            descriptor = Optional.of(response)
+                    .filter(resp -> resp.getStatus() == 200)
+                    .map(this::extractDependency)
+                    .map(dependency -> new Descriptor(host, file, dependency))
+                    .orElse(null);
+
             response.close();
         }
 

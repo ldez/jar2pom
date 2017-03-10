@@ -13,8 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.nio.file.Path;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
@@ -34,14 +33,7 @@ public class CompositeDescriptorStrategyTest {
     private ArgumentCaptor<Path> pathCaptor;
 
     @Test
-    public void twoStrategiesFail() throws Exception {
-        when(this.descriptorStrategy02.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
-            final String sourceName = "descriptorStrategy02";
-            final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
-            final Dependency dependency = new Dependency("artifactId");
-            return new Descriptor(sourceName, file, dependency, true);
-        });
-
+    public void should_return_null_when_all_strategies_fail() throws Exception {
         final CompositeDescriptorStrategy compositeDescriptorStrategy = new CompositeDescriptorStrategy(this.descriptorStrategy01);
         compositeDescriptorStrategy.add(this.descriptorStrategy02);
 
@@ -49,11 +41,11 @@ public class CompositeDescriptorStrategyTest {
 
         final Descriptor descriptor = compositeDescriptorStrategy.search(file);
 
-        assertNotNull(descriptor);
+        assertThat(descriptor).isNull();
     }
 
     @Test
-    public void twoStrategiesSecondFound() throws Exception {
+    public void should_use_the_second_strategy_when_the_first_strategy_fail() throws Exception {
         when(this.descriptorStrategy01.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy01";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
@@ -74,11 +66,12 @@ public class CompositeDescriptorStrategyTest {
 
         final Descriptor descriptor = compositeDescriptorStrategy.search(file);
 
-        assertEquals("descriptorStrategy02", descriptor.getSourceName());
+        assertThat(descriptor.getSourceName())
+                .isEqualTo("descriptorStrategy02");
     }
 
     @Test
-    public void twoStrategiesFirstFound() throws Exception {
+    public void should_use_the_first_strategy_when_the_first_strategy_find_a_result() throws Exception {
         when(this.descriptorStrategy01.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
             final String sourceName = "descriptorStrategy01";
             final Path file = CompositeDescriptorStrategyTest.this.pathCaptor.getValue();
@@ -93,7 +86,8 @@ public class CompositeDescriptorStrategyTest {
 
         final Descriptor descriptor = compositeDescriptorStrategy.search(file);
 
-        assertEquals("descriptorStrategy01", descriptor.getSourceName());
+        assertThat(descriptor.getSourceName())
+                .isEqualTo("descriptorStrategy01");
     }
 
 }

@@ -19,8 +19,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
@@ -59,7 +58,7 @@ public class JarConverterDescriptorsTest {
     }
 
     @Test
-    public void getDescriptorsEmptyNotRecursive() throws Exception {
+    public void should_return_empty_list_of_descriptors_when_no_recursive_mode_and_no_jar_exists() throws Exception {
 
         final Path input = this.temporaryFolder.getRoot().toPath();
         final String customHost = null;
@@ -67,11 +66,11 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(0));
+        assertThat(descriptors).isEmpty();
     }
 
     @Test
-    public void getDescriptorsNotRecursive() throws Exception {
+    public void should_return_one_descriptor_when_no_recursive_mode_and_jar_exists() throws Exception {
 
         this.temporaryFolder.newFile("foobar.jar");
         this.temporaryFolder.newFile("foobar.txt");
@@ -84,11 +83,11 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(1));
+        assertThat(descriptors).hasSize(1);
     }
 
     @Test
-    public void getDescriptorsRecursive() throws Exception {
+    public void should_return_one_descriptor_when_recursive_mode_and_jar_exists() throws Exception {
 
         this.temporaryFolder.newFile("foobar.jar");
         this.temporaryFolder.newFile("foobar.txt");
@@ -101,7 +100,7 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(1));
+        assertThat(descriptors).hasSize(1);
     }
 
 }

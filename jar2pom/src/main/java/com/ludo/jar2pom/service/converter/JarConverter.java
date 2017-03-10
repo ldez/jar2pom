@@ -44,7 +44,6 @@ public class JarConverter implements Converter {
      * @param outputWriter       the output writer
      */
     public JarConverter(final DescriptorStrategy descriptorStrategy, final OutputWriter outputWriter) {
-        super();
         this.descriptorStrategy = descriptorStrategy;
         this.outputWriter = outputWriter;
     }
