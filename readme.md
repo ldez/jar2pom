@@ -2,14 +2,14 @@
 [![JAR2POM Logo](https://github.com/ldez/jar2pom/blob/master/jar2pom-medium.png)](https://github.com/ldez/jar2pom)
 
 
-# JAR2POM #
+# JAR2POM
 
 [![Build Status](https://travis-ci.org/ldez/jar2pom.svg?branch=master)](https://travis-ci.org/ldez/jar2pom) 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2805/badge.svg)](https://scan.coverity.com/projects/2805)
 [![Coverage Status](https://coveralls.io/repos/ldez/jar2pom/badge.png)](https://coveralls.io/r/ldez/jar2pom)
 
 
-## Summary ##
+## Summary
 
 Command line tools for producing a POM from one or more JAR.
 
@@ -18,12 +18,12 @@ Command line tools for producing a POM from one or more JAR.
 Based on the idea of [Provenance](https://github.com/armhold/Provenance) by [George Armhold](http://armhold.com).
 
 
-## Download ##
+## Download
 
 Download version 1.0.2-RELEASE [here](https://github.com/ldez/jar2pom/releases/download/v1.0.2-RELEASE/jar2pom.jar)
 
 
-## Build ##
+## Build
 
 In the directory where the pom.xml is, run:
 
@@ -32,7 +32,7 @@ mvn clean package
 ```
 
 
-## Run like ##
+## Run
 
 ```shell
 java -jar jar2pom.jar
@@ -62,9 +62,9 @@ Options (no options are mandatory):
      -r           : inspect input path recursively.
 
 
-## Technologies ##
+## Technologies
 
-- `Java 7`
+- Java 8
 - [args4j](https://github.com/kohsuke/args4j) : interface and options for the command line
 - [NIO.2](http://docs.oracle.com/javase/tutorial/essential/io/fileio.html) : browse JAR files.
 - [Guava](https://code.google.com/p/guava-libraries) : calculating SHA1 from the contents of the JAR files.
@@ -72,20 +72,20 @@ Options (no options are mandatory):
 - [mustache.java](https://github.com/spullara/mustache.java) : generation of the output file
 
 
-## Explanation ##
+## Explanation
 
 - Browse and detect all jars.
 - For each JAR file, calculates the SHA1.
 - Querying REST Services Maven repositories.
 - Creating a POM file.
 
-### Browse Jar ###
+### Browse Jar
 
 - a single jar.
 - a folder containing jars (recursive or not).
 
 
-### Maven Search ###
+### Maven Search
 
 April 22, 2015
 
@@ -97,7 +97,6 @@ Nexus:
 | [repository.sonatype.org](https://repository.sonatype.org) | 2.11.2-06 |
 | [maven.java.net](https://maven.java.net)                   | 2.11.2-06 |
 | [maven.atlassian.com](https://maven.atlassian.com)         | 2.11.2-06 |
-| [nexus.codehaus.org](https://nexus.codehaus.org)           | 2.11.2-06 |
 | [repository.apache.org](https://repository.apache.org)     | 2.11.1-01 |
 
 Search type:
@@ -106,16 +105,16 @@ Search type:
 - ~~Artifact id~~
 - ~~Class name~~
 
-### POM build ###
+### POM build
 
 Output as an XML file [Partial POM].
 
 
-## REST API ##
+## REST API
 
-### Nexus ###
+### Nexus
 
-#### Nexus Indexer Lucene Plugin REST API ####
+#### Nexus Indexer Lucene Plugin REST API
 
 - [Sonatype OSS - Nexus Indexer Lucene Plugin REST API](https://oss.sonatype.org/nexus-indexer-lucene-plugin/default/docs/index.html)
 - [Sonatype RSO - Nexus Indexer Lucene Plugin REST API](https://repository.sonatype.org/nexus-indexer-lucene-plugin/default/docs/index.html)
@@ -123,7 +122,7 @@ Output as an XML file [Partial POM].
 Le service supporte des réponses en XML ou JSON uniquement pour certaines ressources.
 La définition XSD est disponible pour le XML uniquement pour une partie des ressources.
 
-##### Warning #####
+##### Warning
 
 - Bug with `Nexus Indexer Lucene Plugin REST API` XSD : [NEXUS-6755](https://issues.sonatype.org/browse/NEXUS-6755)
 - `da39a3ee5e6b4b0d3255bfef95601890afd80709` qui est le sha1 d'un fichier vide correspond à plus de 100 jars mais `identify` ne retourne qu'une seule valeur sans cohérence.
@@ -135,12 +134,12 @@ Example :
 - [search RSO](https://repository.sonatype.org/service/local/lucene/search?sha1=35379fb6526fd019f331542b4e9ae2e566c57933) XML only
 - [search RSO](https://repository.sonatype.org/service/local/identify/sha1/35379fb6526fd019f331542b4e9ae2e566c57933) XML or JSON (Header : Accept=application/json)
 
-#### Nexus Core API (Restlet 1.x Plugin) REST API ####
+#### Nexus Core API (Restlet 1.x Plugin) REST API
 
 - [Sonatype OSS - Nexus Core API (Restlet 1.x Plugin) REST API](https://oss.sonatype.org/nexus-restlet1x-plugin/default/docs/index.html)
 - [Sonatype RSO - Nexus Core API (Restlet 1.x Plugin) REST API](https://repository.sonatype.org/nexus-restlet1x-plugin/default/docs/index.html)
 
-### Maven Central ###
+### Maven Central
 
 - [Maven Central - Sonatype - API](http://search.maven.org/#api)
 
@@ -152,15 +151,15 @@ Aucune définition XSD n'est disponible pour le XML.
 ex : [search](http://search.maven.org/solrsearch/select?q=1:"35379fb6526fd019f331542b4e9ae2e566c57933"&rows=20&wt=json)
 
 
-## XML file ##
+## XML file
 
 ```xml
-    <!-- source url / file path -->
-    <dependency>
-        <groupId>groupId</groupId>
-        <artifactId>artifactId</artifactId>
-        <version>version</version>
-    </dependency>
+<!-- source url / file path -->
+<dependency>
+    <groupId>groupId</groupId>
+    <artifactId>artifactId</artifactId>
+    <version>version</version>
+</dependency>
 ```
 
 - source url
