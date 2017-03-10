@@ -1,28 +1,25 @@
 package com.ludo.jar2pom.service.converter;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyCollectionOf;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.nio.file.Path;
-import java.util.List;
-
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import com.ludo.jar2pom.model.Arguments;
+import com.ludo.jar2pom.service.output.OutputWriter;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
-import com.ludo.jar2pom.model.Arguments;
-import com.ludo.jar2pom.service.converter.JarConverter;
-import com.ludo.jar2pom.service.output.OutputWriter;
+import java.nio.file.Path;
+
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.nullable;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JarConverterProcessTest {
@@ -51,7 +48,7 @@ public class JarConverterProcessTest {
         this.converter.process(this.arguments);
 
         verify(this.descriptorStrategy, never()).search(any(Path.class), anyString());
-        verify(this.outputWriter).writeOutputFile((List<Descriptor>) anyCollectionOf(Descriptor.class), any(Path.class));
+        verify(this.outputWriter).writeOutputFile(anyList(), nullable(Path.class));
     }
 
     @Test
@@ -66,8 +63,8 @@ public class JarConverterProcessTest {
 
         this.converter.process(this.arguments);
 
-        verify(this.descriptorStrategy).search(any(Path.class), anyString());
-        verify(this.outputWriter).writeOutputFile((List<Descriptor>) anyCollectionOf(Descriptor.class), any(Path.class));
+        verify(this.descriptorStrategy).search(any(Path.class), nullable(String.class));
+        verify(this.outputWriter).writeOutputFile(anyList(), nullable(Path.class));
     }
 
 }

@@ -1,8 +1,8 @@
 package com.ludo.jar2pom.service.converter;
 
-import java.io.IOException;
-
 import com.ludo.jar2pom.model.Arguments;
+
+import java.io.IOException;
 
 /**
  * The Interface Converter.

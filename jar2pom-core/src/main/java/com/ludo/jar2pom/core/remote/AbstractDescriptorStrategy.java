@@ -1,20 +1,7 @@
 package com.ludo.jar2pom.core.remote;
 
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import com.ludo.jar2pom.core.model.Dependency;
+import com.ludo.jar2pom.core.model.Descriptor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.glassfish.jersey.client.ClientConfig;
@@ -22,8 +9,20 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ludo.jar2pom.core.model.Dependency;
-import com.ludo.jar2pom.core.model.Descriptor;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation.Builder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
 
@@ -36,7 +35,6 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
     private MediaType mediaType;
 
     public AbstractDescriptorStrategy(final MediaType mediaType, final Collection<String> predefinedHosts) {
-        super();
         Objects.requireNonNull(predefinedHosts, "Predefined hosts cannot be null.");
         this.predefinedHosts.addAll(predefinedHosts);
 
@@ -87,12 +85,12 @@ public abstract class AbstractDescriptorStrategy implements DescriptorStrategy {
             Objects.requireNonNull(response, "Response cannot be null.");
 
             // Response
-            if (response.getStatus() == 200) {
-                final Dependency dependency = this.extractDependency(response);
-                if (dependency != null) {
-                    descriptor = new Descriptor(host, file, dependency);
-                }
-            }
+            descriptor = Optional.of(response)
+                    .filter(resp -> resp.getStatus() == 200)
+                    .map(this::extractDependency)
+                    .map(dependency -> new Descriptor(host, file, dependency))
+                    .orElse(null);
+
             response.close();
         }
 

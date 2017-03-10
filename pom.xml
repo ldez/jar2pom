@@ -1,8 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ludo</groupId>
     <artifactId>jar2pom-parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jar to POM</name>
@@ -50,10 +51,10 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <javac.encoding>UTF-8</javac.encoding>
-        <javac.source.version>1.7</javac.source.version>
-        <javac.target.version>1.7</javac.target.version>
+        <javac.source.version>1.8</javac.source.version>
+        <javac.target.version>1.8</javac.target.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
-        <prerequisites.maven.version>3.0.1</prerequisites.maven.version>
+        <prerequisites.maven.version>3.2.0</prerequisites.maven.version>
 
         <!-- ========= Dependencies version ========= -->
 
@@ -62,55 +63,55 @@
 
         <jackson.version>2.7.1</jackson.version>
 
-        <!-- <mustache.version>0.9.0</mustache.version> --><!-- Java 8 only -->
-        <mustache.version>0.8.17</mustache.version>
+        <mustache.version>0.9.4</mustache.version>
 
         <args4j.version>2.33</args4j.version>
 
-        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-collections4.version>4.1</commons-collections4.version>
 
-        <guava.version>19.0</guava.version>
+        <guava.version>21.0</guava.version>
 
-        <zt-zip.version>1.9</zt-zip.version>
+        <zt-zip.version>1.11</zt-zip.version>
 
-        <jaxb2-basics.version>0.9.4</jaxb2-basics.version>
-        <jaxb2-basics-runtime.version>0.9.4</jaxb2-basics-runtime.version>
+        <jaxb2-basics.version>0.10.0</jaxb2-basics.version>
+        <jaxb2-basics-runtime.version>0.10.0</jaxb2-basics-runtime.version>
         <jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
         <jaxb2-commons-lang.version>2.4</jaxb2-commons-lang.version>
         <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
-        <jaxb2-basics-annotate.version> 1.0.1</jaxb2-basics-annotate.version>
+        <jaxb2-basics-annotate.version>1.0.2</jaxb2-basics-annotate.version>
 
-        <slf4j.version>1.7.14</slf4j.version>
-        <logback.version>1.1.3</logback.version>
-        <janino.version>2.7.8</janino.version>
+        <slf4j.version>1.7.24</slf4j.version>
+        <logback.version>1.2.1</logback.version>
+        <janino.version>3.0.6</janino.version>
 
         <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-        <objenesis.version>2.2</objenesis.version>
+        <assertj-core.version>3.6.2</assertj-core.version>
+        <mockito.version>2.7.16</mockito.version>
+        <objenesis.version>2.5.1</objenesis.version>
         <surefire.version>2.14</surefire.version>
         <hamcrest.version>1.3</hamcrest.version>
-        <JUnitParams.version>1.0.4</JUnitParams.version>
+        <JUnitParams.version>1.0.6</JUnitParams.version>
         <xmlunit.version>1.6</xmlunit.version>
-        <openpojo.version>0.8.3</openpojo.version>
+        <openpojo.version>0.8.4</openpojo.version>
 
         <!-- ==== Plugin's versions ==== -->
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
         <maven-assembly-plugin.version>2.4.1</maven-assembly-plugin.version>
-        <maven-shade-plugin.version>2.4</maven-shade-plugin.version>
+        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
 
-        <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
-        <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
 
-        <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
-        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
-        <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+        <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
+        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
         <jaxb2-maven-plugin.version>2.2</jaxb2-maven-plugin.version>
@@ -118,14 +119,14 @@
         <coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
 
         <!-- ==== Report plugin's versions ==== -->
-        <maven-surefire-report-plugin.version>2.18.1</maven-surefire-report-plugin.version>
-        <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
+        <maven-surefire-report-plugin.version>2.19.1</maven-surefire-report-plugin.version>
+        <maven-project-info-reports-plugin.version>2.8.1</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
-        <cobertura-maven-plugin.version> 2.6</cobertura-maven-plugin.version>
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <taglist-maven-plugin.version>2.4</taglist-maven-plugin.version>
-        <findbugs-maven-plugin.version>3.0.0</findbugs-maven-plugin.version>
-        <maven-checkstyle-plugin.version>2.15</maven-checkstyle-plugin.version>
-        <maven-pmd-plugin.version>3.3</maven-pmd-plugin.version>
+        <findbugs-maven-plugin.version>3.0.3</findbugs-maven-plugin.version>
+        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>3.6</maven-pmd-plugin.version>
     </properties>
 
     <prerequisites>
@@ -330,6 +331,14 @@
                 <version>${janino.version}</version>
             </dependency>
 
+            <!-- ==== AssertJ ==== -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <!-- ==== jUnit ==== -->
             <dependency>
                 <groupId>junit</groupId>
@@ -356,12 +365,6 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
@@ -488,13 +491,17 @@
                         <rules>
                             <requireJavaVersion>
                                 <version>[${javac.target.version},)</version>
-                                <message>[ERROR] The currently supported version of Java is ${javac.target.version} or higher</message>
+                                <message>[ERROR] The currently supported version of Java is ${javac.target.version} or
+                                    higher
+                                </message>
                             </requireJavaVersion>
                             <requireMavenVersion>
                                 <version>[${prerequisites.maven.version},)</version>
-                                <message>[ERROR] The currently supported version of Maven is ${prerequisites.maven.version} or higher</message>
+                                <message>[ERROR] The currently supported version of Maven is
+                                    ${prerequisites.maven.version} or higher
+                                </message>
                             </requireMavenVersion>
-                            <DependencyConvergence />
+                            <DependencyConvergence/>
                             <bannedDependencies>
                                 <excludes>
                                     <exclude>*:commons-logging</exclude>
@@ -508,7 +515,8 @@
                                 <banSnapshots>true</banSnapshots>
                                 <phases>clean,deploy,site</phases>
                                 <message>[ERROR] Best Practice is to always define plugin
-                                    versions !</message>
+                                    versions !
+                                </message>
                             </requirePluginVersions>
                         </rules>
                         <fail>true</fail>

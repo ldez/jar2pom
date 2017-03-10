@@ -2,17 +2,17 @@
 
 <configuration debug="false" scan="true">
 
-	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-		<encoder>
-			<pattern>%-27(%d [%thread] %-5level) - %logger{36} - %msg%n%ex{short}</pattern>
-		</encoder>
-	</appender>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-27(%d [%thread] %-5level) - %logger{36} - %msg%n%ex{short}</pattern>
+        </encoder>
+    </appender>
 
-	<logger name="org.maven.search.rest" level="DEBUG" />
+    <logger name="org.maven.search.rest" level="DEBUG"/>
 
-	<root level="WARN">
-		<appender-ref ref="consoleAppender" />
-	</root>
+    <root level="WARN">
+        <appender-ref ref="consoleAppender"/>
+    </root>
 
 </configuration>

@@ -13,17 +13,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,28 +43,22 @@ public class JarConverterDescriptorsTest {
 
     @Before
     public void setup() throws IOException {
-        when(this.descriptorStrategy.search(this.pathCaptor.capture(), anyString())).then(new Answer<Descriptor>() {
-            @Override
-            public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
-                final String sourceName = "foobar";
-                final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
-                final Dependency dependency = new Dependency("artifactId");
-                return new Descriptor(sourceName, file, dependency);
-            }
+        when(this.descriptorStrategy.search(this.pathCaptor.capture(), nullable(String.class))).then(invocation -> {
+            final String sourceName = "foobar";
+            final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
+            final Dependency dependency = new Dependency("artifactId");
+            return new Descriptor(sourceName, file, dependency);
         });
-        when(this.descriptorStrategy.search(this.pathCaptor.capture())).then(new Answer<Descriptor>() {
-            @Override
-            public Descriptor answer(final InvocationOnMock invocation) throws Throwable {
-                final String sourceName = "foobar";
-                final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
-                final Dependency dependency = new Dependency("artifactId");
-                return new Descriptor(sourceName, file, dependency);
-            }
+        when(this.descriptorStrategy.search(this.pathCaptor.capture())).then(invocation -> {
+            final String sourceName = "foobar";
+            final Path file = JarConverterDescriptorsTest.this.pathCaptor.getValue();
+            final Dependency dependency = new Dependency("artifactId");
+            return new Descriptor(sourceName, file, dependency);
         });
     }
 
     @Test
-    public void getDescriptorsEmptyNotRecursive() throws Exception {
+    public void should_return_empty_list_of_descriptors_when_no_recursive_mode_and_no_jar_exists() throws Exception {
 
         final Path input = this.temporaryFolder.getRoot().toPath();
         final String customHost = null;
@@ -75,11 +66,11 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(0));
+        assertThat(descriptors).isEmpty();
     }
 
     @Test
-    public void getDescriptorsNotRecursive() throws Exception {
+    public void should_return_one_descriptor_when_no_recursive_mode_and_jar_exists() throws Exception {
 
         this.temporaryFolder.newFile("foobar.jar");
         this.temporaryFolder.newFile("foobar.txt");
@@ -92,11 +83,11 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(1));
+        assertThat(descriptors).hasSize(1);
     }
 
     @Test
-    public void getDescriptorsRecursive() throws Exception {
+    public void should_return_one_descriptor_when_recursive_mode_and_jar_exists() throws Exception {
 
         this.temporaryFolder.newFile("foobar.jar");
         this.temporaryFolder.newFile("foobar.txt");
@@ -109,7 +100,7 @@ public class JarConverterDescriptorsTest {
 
         final List<Descriptor> descriptors = this.converter.getDescriptors(input, customHost, recursive);
 
-        assertThat(descriptors, hasSize(1));
+        assertThat(descriptors).hasSize(1);
     }
 
 }

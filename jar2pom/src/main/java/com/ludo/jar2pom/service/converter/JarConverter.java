@@ -1,5 +1,14 @@
 package com.ludo.jar2pom.service.converter;
 
+import com.google.common.collect.Sets;
+import com.ludo.jar2pom.core.file.FileJarVisitor;
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import com.ludo.jar2pom.model.Arguments;
+import com.ludo.jar2pom.service.output.OutputWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -8,38 +17,33 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.Sets;
-import com.ludo.jar2pom.core.file.FileJarVisitor;
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
-import com.ludo.jar2pom.model.Arguments;
-import com.ludo.jar2pom.service.output.OutputWriter;
-
 /**
  * The Class JarConverter.
  */
 public class JarConverter implements Converter {
 
-    /** The Constant LOG. */
+    /**
+     * The Constant LOG.
+     */
     private static final Logger LOG = LoggerFactory.getLogger(JarConverter.class);
 
-    /** The descriptor strategy. */
+    /**
+     * The descriptor strategy.
+     */
     private final DescriptorStrategy descriptorStrategy;
 
-    /** The output writer. */
+    /**
+     * The output writer.
+     */
     private final OutputWriter outputWriter;
 
     /**
      * Instantiates a new jar converter.
      *
      * @param descriptorStrategy the descriptor strategy
-     * @param outputWriter the output writer
+     * @param outputWriter       the output writer
      */
     public JarConverter(final DescriptorStrategy descriptorStrategy, final OutputWriter outputWriter) {
-        super();
         this.descriptorStrategy = descriptorStrategy;
         this.outputWriter = outputWriter;
     }
@@ -67,9 +71,9 @@ public class JarConverter implements Converter {
     /**
      * Gets the descriptors.
      *
-     * @param input the input
+     * @param input      the input
      * @param customHost the custom host
-     * @param recursive the recursive
+     * @param recursive  the recursive
      * @return the descriptors
      * @throws IOException Signals that an I/O exception has occurred.
      */

@@ -1,9 +1,5 @@
 package com.ludo.jar2pom.support;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.OptionDef;
@@ -11,6 +7,10 @@ import org.kohsuke.args4j.spi.Messages;
 import org.kohsuke.args4j.spi.OneArgumentOptionHandler;
 import org.kohsuke.args4j.spi.OptionHandler;
 import org.kohsuke.args4j.spi.Setter;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The Class PathOptionHandler. {@link File} {@link OptionHandler}.

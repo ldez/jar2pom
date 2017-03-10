@@ -9,7 +9,11 @@ import com.ludo.jar2pom.service.output.MustacheOutputWriter;
 import com.ludo.jar2pom.service.output.OutputWriter;
 import com.ludo.jar2pom.support.PathOptionHandler;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.kohsuke.args4j.*;
+import org.kohsuke.args4j.CmdLineException;
+import org.kohsuke.args4j.CmdLineParser;
+import org.kohsuke.args4j.Option;
+import org.kohsuke.args4j.OptionHandlerFilter;
+import org.kohsuke.args4j.ParserProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonatype.nexus.remote.NexusIdentifyDescriptorStrategy;
@@ -36,10 +40,10 @@ public class CmdLine implements Arguments {
     @Option(name = "-host", usage = "defined custom Nexus host.\n(ex: oss.sonatype.org)", metaVar = "HOST", required = false)
     private String customHost = null;
 
-    @Option(name = "-p", aliases = { "--proxy" }, usage = "Use system proxies.", required = false)
+    @Option(name = "-p", aliases = {"--proxy"}, usage = "Use system proxies.", required = false)
     private boolean systemProxy;
 
-    @Option(name = "-h", aliases = { "--help" }, usage = "display help.", help = true)
+    @Option(name = "-h", aliases = {"--help"}, usage = "display help.", help = true)
     private boolean help;
 
     private final Converter converter;

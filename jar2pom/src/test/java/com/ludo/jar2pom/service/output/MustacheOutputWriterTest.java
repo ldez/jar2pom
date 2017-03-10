@@ -6,13 +6,11 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MustacheOutputWriterTest {
 
@@ -22,7 +20,7 @@ public class MustacheOutputWriterTest {
     private final MustacheOutputWriter outputWriter = new MustacheOutputWriter();
 
     @Test(expected = IOException.class)
-    public void createDirectoryFailExistFile() throws Exception {
+    public void should_fail_to_create_directory_when_file_exists() throws Exception {
 
         final Path file = this.temporaryFolder.newFile("foobar.xml").toPath();
 
@@ -30,27 +28,27 @@ public class MustacheOutputWriterTest {
     }
 
     @Test
-    public void createDirectoryCreateDirectory() throws Exception {
+    public void should_create_directory_when_file_is_a_directory_and_not_exists() throws Exception {
 
         final Path file = this.temporaryFolder.getRoot().toPath().resolve("foobar");
 
         this.outputWriter.createDirectory(file);
 
-        assertTrue(Files.exists(file, LinkOption.NOFOLLOW_LINKS));
+        assertThat(file).exists();
     }
 
     @Test
-    public void createDirectoryDirectoryExist() throws Exception {
+    public void should_create_directory_when_file_is_a_directory_and_exists() throws Exception {
 
         final Path file = this.temporaryFolder.getRoot().toPath();
 
         this.outputWriter.createDirectory(file);
 
-        assertTrue(Files.exists(file, LinkOption.NOFOLLOW_LINKS));
+        assertThat(file).exists();
     }
 
     @Test
-    public void writeOutputFile() throws Exception {
+    public void should_write_a_file_when_descriptors_list_is_empty() throws Exception {
         final List<Descriptor> descriptors = new ArrayList<>();
 
         final Path file = this.temporaryFolder.getRoot().toPath();
@@ -59,7 +57,7 @@ public class MustacheOutputWriterTest {
 
         final Path outputPom = MustacheOutputWriter.createOutputPath(file);
 
-        assertTrue(Files.exists(outputPom, LinkOption.NOFOLLOW_LINKS));
+        assertThat(outputPom).exists();
     }
 
 }

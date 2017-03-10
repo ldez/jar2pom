@@ -8,7 +8,9 @@ import java.util.List;
  */
 public final class DefaultHost {
 
-    /** The Constant HOSTS. */
+    /**
+     * The Constant HOSTS.
+     */
     public static final List<String> HOSTS = Collections.singletonList("search.maven.org");
 
     /**

@@ -18,7 +18,13 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
-import java.util.*;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
@@ -29,26 +35,35 @@ import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
  */
 public class MustacheOutputWriter implements OutputWriter {
 
-    /** The Constant LOG. */
+    /**
+     * The Constant LOG.
+     */
     private static final Logger LOG = LoggerFactory.getLogger(MustacheOutputWriter.class);
 
-    /** The Constant PERMS. */
+    /**
+     * The Constant PERMS.
+     */
     private static final Set<PosixFilePermission> PERMS = EnumSet.of(OWNER_READ, OWNER_WRITE, OWNER_EXECUTE);
 
-    /** The Constant OUTPUT_POM_PATTERN. */
+    /**
+     * The Constant OUTPUT_POM_PATTERN.
+     */
     public static final String OUTPUT_POM_PATTERN = "pom_%1$tY-%<tm-%<td_%<tH-%<tM-%<tS.xml";
 
-    /** The Constant OUTPUT_POM_TEMPLATE. */
+    /**
+     * The Constant OUTPUT_POM_TEMPLATE.
+     */
     public static final String OUTPUT_POM_TEMPLATE = "template.mustache";
 
-    /** The mustache. */
+    /**
+     * The mustache.
+     */
     private final Mustache mustache;
 
     /**
      * Instantiates a new mustache output writer.
      */
     public MustacheOutputWriter() {
-        super();
         // create and load template
         final MustacheFactory mustacheFactory = new DefaultMustacheFactory();
         this.mustache = mustacheFactory.compile(OUTPUT_POM_TEMPLATE);

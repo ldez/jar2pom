@@ -1,8 +1,8 @@
 package org.maven.search.rest.model;
 
-import java.util.List;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.util.List;
 
 public class Response {
 
