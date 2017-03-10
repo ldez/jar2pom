@@ -1,9 +1,8 @@
 package org.sonatype.nexus.support;
 
-import org.sonatype.nexus.json.Answer;
-
 import com.google.common.base.Function;
 import com.ludo.jar2pom.core.model.Dependency;
+import org.sonatype.nexus.json.Answer;
 
 /**
  * The Class AnswerTransformer.

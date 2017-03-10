@@ -1,33 +1,41 @@
 package com.ludo.jar2pom.core.model;
 
-import java.nio.file.Path;
-import java.util.Objects;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.nio.file.Path;
+import java.util.Objects;
 
 /**
  * The Class Descriptor.
  */
 public class Descriptor {
 
-    /** The source name. */
+    /**
+     * The source name.
+     */
     private final String sourceName;
 
-    /** The file. */
+    /**
+     * The file.
+     */
     private final Path file;
 
-    /** The dependency. */
+    /**
+     * The dependency.
+     */
     private final Dependency dependency;
 
-    /** The found. */
+    /**
+     * The found.
+     */
     private boolean found = true;
 
     /**
      * Instantiates a new descriptor.
      *
      * @param sourceName the source name
-     * @param file the file
+     * @param file       the file
      * @param dependency the dependency
      */
     public Descriptor(final String sourceName, final Path file, final Dependency dependency) {
@@ -45,9 +53,9 @@ public class Descriptor {
      * Instantiates a new descriptor.
      *
      * @param sourceName the source name
-     * @param file the file
+     * @param file       the file
      * @param dependency the dependency
-     * @param found the found
+     * @param found      the found
      */
     public Descriptor(final String sourceName, final Path file, final Dependency dependency, final boolean found) {
         this(sourceName, file, dependency);

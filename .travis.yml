@@ -6,7 +6,7 @@ jdk:
 script: mvn clean test -B
 env:
   global:
-   - secure: "VKvDvS5RpATVGtLwgkKGaSNcAwo3tDlCkVCmXcbHvPAtngxqyWA2vl34mTOq4BxGRKYjSe9IZuY92aV88h1vpreGT/uzvvuRomb4ynOU0iubGixXT2/2MMbc36xnvuVEpMuG/WMsz5raVY8D77BuGb/XNcWKi1r9+cCzfp2d44Q="
+  - secure: "VKvDvS5RpATVGtLwgkKGaSNcAwo3tDlCkVCmXcbHvPAtngxqyWA2vl34mTOq4BxGRKYjSe9IZuY92aV88h1vpreGT/uzvvuRomb4ynOU0iubGixXT2/2MMbc36xnvuVEpMuG/WMsz5raVY8D77BuGb/XNcWKi1r9+cCzfp2d44Q="
 
 addons:
   coverity_scan:

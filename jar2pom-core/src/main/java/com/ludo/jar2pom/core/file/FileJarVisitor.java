@@ -1,5 +1,11 @@
 package com.ludo.jar2pom.core.file;
 
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
@@ -10,13 +16,6 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
 
 public class FileJarVisitor extends SimpleFileVisitor<Path> {
 

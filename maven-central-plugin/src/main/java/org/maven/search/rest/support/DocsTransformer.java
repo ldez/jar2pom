@@ -1,9 +1,8 @@
 package org.maven.search.rest.support;
 
-import org.maven.search.rest.model.Docs;
-
 import com.google.common.base.Function;
 import com.ludo.jar2pom.core.model.Dependency;
+import org.maven.search.rest.model.Docs;
 
 public class DocsTransformer implements Function<Docs, Dependency> {
 

@@ -1,15 +1,9 @@
 package com.ludo.jar2pom.service.converter;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyCollectionOf;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.nio.file.Path;
-import java.util.List;
-
+import com.ludo.jar2pom.core.model.Descriptor;
+import com.ludo.jar2pom.core.remote.DescriptorStrategy;
+import com.ludo.jar2pom.model.Arguments;
+import com.ludo.jar2pom.service.output.OutputWriter;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -18,11 +12,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ludo.jar2pom.core.model.Descriptor;
-import com.ludo.jar2pom.core.remote.DescriptorStrategy;
-import com.ludo.jar2pom.model.Arguments;
-import com.ludo.jar2pom.service.converter.JarConverter;
-import com.ludo.jar2pom.service.output.OutputWriter;
+import java.nio.file.Path;
+import java.util.List;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyCollectionOf;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class JarConverterProcessTest {

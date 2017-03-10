@@ -10,34 +10,48 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class Dependency {
 
-    /** The Constant DEFAULT_GROUP_ID. */
+    /**
+     * The Constant DEFAULT_GROUP_ID.
+     */
     public static final String DEFAULT_GROUP_ID = "unknown.group";
 
-    /** The Constant DEFAULT_VERSION_ID. */
+    /**
+     * The Constant DEFAULT_VERSION_ID.
+     */
     public static final String DEFAULT_VERSION_ID = "0.0.0";
 
-    /** The group id. */
+    /**
+     * The group id.
+     */
     private String groupId = DEFAULT_GROUP_ID;
 
-    /** The artifact id. */
+    /**
+     * The artifact id.
+     */
     private final String artifactId;
 
-    /** The version. */
+    /**
+     * The version.
+     */
     private String version = DEFAULT_VERSION_ID;
 
-    /** The type. */
+    /**
+     * The type.
+     */
     private String type;
 
-    /** The classifier. */
+    /**
+     * The classifier.
+     */
     private String classifier;
 
     /**
      * Instantiates a new dependency.
      *
-     * @param groupId the group id
+     * @param groupId    the group id
      * @param artifactId the artifact id
-     * @param version the version
-     * @param type the type
+     * @param version    the version
+     * @param type       the type
      * @param classifier the classifier
      */
     public Dependency(final String groupId, final String artifactId, final String version, final String type, final String classifier) {
@@ -49,9 +63,9 @@ public class Dependency {
     /**
      * Instantiates a new dependency.
      *
-     * @param groupId the group id
+     * @param groupId    the group id
      * @param artifactId the artifact id
-     * @param version the version
+     * @param version    the version
      */
     public Dependency(final String groupId, final String artifactId, final String version) {
         this(artifactId);

@@ -1,8 +1,8 @@
 package com.ludo.jar2pom;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -10,9 +10,9 @@ import java.nio.file.FileSystems;
 import java.nio.file.PathMatcher;
 import java.util.Arrays;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 public class CmdLineMainTest {
 
@@ -23,7 +23,7 @@ public class CmdLineMainTest {
 
     @Test
     public void mainHelp() throws Exception {
-        final String[] args = new String[] { "-h" };
+        final String[] args = new String[]{"-h"};
         CmdLine.main(args);
     }
 
@@ -36,7 +36,7 @@ public class CmdLineMainTest {
 
         final File output = this.temporaryFolder.newFolder("output");
 
-        final String[] args = new String[] { "-i", root.toString(), "-o", output.toString(), "-r" };
+        final String[] args = new String[]{"-i", root.toString(), "-o", output.toString(), "-r"};
 
         CmdLine.main(args);
 

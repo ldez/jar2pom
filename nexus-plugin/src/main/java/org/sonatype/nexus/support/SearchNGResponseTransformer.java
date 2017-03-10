@@ -1,14 +1,13 @@
 package org.sonatype.nexus.support;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.sonatype.nexus.rest.custom.NexusNGArtifact;
-import org.sonatype.nexus.rest.custom.SearchNGResponse;
-
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.ludo.jar2pom.core.model.Dependency;
+import org.sonatype.nexus.rest.custom.NexusNGArtifact;
+import org.sonatype.nexus.rest.custom.SearchNGResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchNGResponseTransformer implements Function<SearchNGResponse, List<Dependency>> {
 

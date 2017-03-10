@@ -24,7 +24,7 @@ public class CmdLineTest {
     public void processHelp() throws Exception {
         final CmdLine cmdLine = new CmdLine(this.converter);
 
-        final String[] args = new String[] { "-h" };
+        final String[] args = new String[]{"-h"};
         cmdLine.doMain(args);
 
         verify(this.converter, never()).process(any(Arguments.class));
@@ -36,7 +36,7 @@ public class CmdLineTest {
 
         doThrow(IOException.class).when(this.converter).process(any(Arguments.class));
 
-        final String[] args = new String[] {};
+        final String[] args = new String[]{};
         cmdLine.doMain(args);
 
         verify(this.converter).process(any(Arguments.class));
@@ -46,7 +46,7 @@ public class CmdLineTest {
     public void processWithProxy() throws Exception {
         final CmdLine cmdLine = new CmdLine(this.converter);
 
-        final String[] args = new String[] { "-p" };
+        final String[] args = new String[]{"-p"};
         cmdLine.doMain(args);
 
         verify(this.converter).process(any(Arguments.class));

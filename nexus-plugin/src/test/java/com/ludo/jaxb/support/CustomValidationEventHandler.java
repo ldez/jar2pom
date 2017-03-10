@@ -1,9 +1,9 @@
 package com.ludo.jaxb.support;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class CustomValidationEventHandler implements ValidationEventHandler {
 

@@ -1,9 +1,8 @@
 package org.sonatype.nexus.support;
 
-import org.sonatype.nexus.rest.custom.NexusNGArtifact;
-
 import com.google.common.base.Function;
 import com.ludo.jar2pom.core.model.Dependency;
+import org.sonatype.nexus.rest.custom.NexusNGArtifact;
 
 public class NexusNGArtifactTransformer implements Function<NexusNGArtifact, Dependency> {
 

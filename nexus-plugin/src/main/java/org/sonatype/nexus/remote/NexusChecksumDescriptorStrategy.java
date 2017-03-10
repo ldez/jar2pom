@@ -1,27 +1,25 @@
 package org.sonatype.nexus.remote;
 
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-
-import org.apache.commons.collections4.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.sonatype.nexus.rest.custom.SearchNGResponse;
-
 import com.google.common.base.Function;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import com.google.common.io.Files;
 import com.ludo.jar2pom.core.model.Dependency;
 import com.ludo.jar2pom.core.remote.AbstractDescriptorStrategy;
+import org.apache.commons.collections4.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.sonatype.nexus.rest.custom.SearchNGResponse;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class NexusChecksumDescriptorStrategy extends AbstractDescriptorStrategy {
 
