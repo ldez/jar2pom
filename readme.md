@@ -20,7 +20,7 @@ Based on the idea of [Provenance](https://github.com/armhold/Provenance) by [Geo
 
 ## Download
 
-Download version 2.0.0 [here](https://github.com/ldez/jar2pom/releases/download/2.0.0/jar2pom.jar)
+Download version 2.0.0 [here](https://github.com/ldez/jar2pom/releases/download/jar2pom-parent-2.0.0/jar2pom.jar)
 
 
 ## Build
