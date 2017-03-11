@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ludo</groupId>
     <artifactId>jar2pom-parent</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jar to POM</name>
@@ -15,7 +15,7 @@
         <connection>scm:git:git@github.com:ldez/jar2pom.git</connection>
         <url>scm:git:git@github.com:ldez/jar2pom.git</url>
         <developerConnection>scm:git:git@github.com:ldez/jar2pom.git</developerConnection>
-        <tag>jar2pom-parent-2.0.0</tag>
+        <tag>master</tag>
     </scm>
 
     <ciManagement>
