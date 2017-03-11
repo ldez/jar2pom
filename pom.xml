@@ -13,9 +13,9 @@
     <url>https://github.com/ldez/jar2pom</url>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com:ldez/jar2pom.git</connection>
-        <url>scm:git:ssh://git@github.com:ldez/jar2pom.git</url>
-        <developerConnection>scm:git:ssh://git@github.com:ldez/jar2pom.git</developerConnection>
+        <connection>scm:git:git@github.com:ldez/jar2pom.git</connection>
+        <url>scm:git:git@github.com:ldez/jar2pom.git</url>
+        <developerConnection>scm:git:git@github.com:ldez/jar2pom.git</developerConnection>
         <tag>master</tag>
     </scm>
 
@@ -109,6 +109,7 @@
         <maven-failsafe-plugin.version>2.19</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
 
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <versions-maven-plugin.version>2.2</versions-maven-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
@@ -670,6 +671,11 @@
                     <version>${maven-shade-plugin.version}</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
