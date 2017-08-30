@@ -16,7 +16,6 @@ public final class DefaultHost {
             "repository.sonatype.org",
             "maven.java.net",
             "maven.atlassian.com",
-            "nexus.codehaus.org",
             "repository.apache.org"
     );
 
