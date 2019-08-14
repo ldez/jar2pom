@@ -62,7 +62,7 @@
 
         <jackson.version>2.10.0.pr1</jackson.version>
 
-        <mustache.version>0.9.4</mustache.version>
+        <mustache.version>0.9.6</mustache.version>
 
         <args4j.version>2.33</args4j.version>
 
