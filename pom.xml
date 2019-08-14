@@ -60,7 +60,7 @@
         <!-- Bug since version 2.16 -->
         <jersey2.version>2.15</jersey2.version>
 
-        <jackson.version>2.7.1</jackson.version>
+        <jackson.version>2.10.0.pr1</jackson.version>
 
         <mustache.version>0.9.4</mustache.version>
 
