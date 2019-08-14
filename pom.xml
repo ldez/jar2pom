@@ -69,7 +69,7 @@
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
 
         <guava.version>21.0</guava.version>
 
