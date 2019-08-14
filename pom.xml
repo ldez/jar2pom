@@ -82,7 +82,7 @@
         <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
         <jaxb2-basics-annotate.version>1.0.2</jaxb2-basics-annotate.version>
 
-        <slf4j.version>1.7.24</slf4j.version>
+        <slf4j.version>1.7.28</slf4j.version>
         <logback.version>1.2.1</logback.version>
         <janino.version>3.0.15</janino.version>
 
