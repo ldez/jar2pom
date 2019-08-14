@@ -119,7 +119,7 @@
         <coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
 
         <!-- ==== Report plugin's versions ==== -->
-        <maven-surefire-report-plugin.version>2.19.1</maven-surefire-report-plugin.version>
+        <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
         <maven-project-info-reports-plugin.version>2.8.1</maven-project-info-reports-plugin.version>
         <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
