@@ -67,7 +67,7 @@
         <args4j.version>2.33</args4j.version>
 
         <commons-lang3.version>3.5</commons-lang3.version>
-        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-collections4.version>4.4</commons-collections4.version>
 
