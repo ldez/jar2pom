@@ -86,7 +86,7 @@
         <logback.version>1.2.1</logback.version>
         <janino.version>3.0.15</janino.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj-core.version>3.6.2</assertj-core.version>
         <mockito.version>2.7.16</mockito.version>
         <objenesis.version>3.0.1</objenesis.version>
